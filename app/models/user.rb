@@ -7,12 +7,16 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :requests
 
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
-  # validates :birth_date, presence: true
-  # validates :address, presence: true
-  # validates :zip_code, presence: true
-  # validates :city, presence: true
-  # validates :about_me, presence: true, length: { maximum: 300 }
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :birth_date, presence: true
+  validates :address, presence: true
+  validates :zip_code, presence: true
+  validates :city, presence: true
+  validates :about_me, presence: true, length: { maximum: 300 }
 
+
+  def full_name
+    "#{self.first_name}" + " " + "#{self.last_name}"
+  end
 end

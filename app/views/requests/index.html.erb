@@ -1,0 +1,35 @@
+<div class="container-wide mb-5">
+  <%= render 'shared/map' %>
+</div>
+<div class="container-fluid">
+  <% if @requests_near.count >= 1 %>
+  <h1>Em <%= current_user.city %>:</h1>
+  <div class="cards my-3">
+    <% @requests_near.each do |request| %>
+    <div class="card hoverable">
+      <%= link_to request_path(request), class: 'nounderline' do %>
+      <!-- img here -->
+      <div class="card-block text-center">
+        <h4 class="card-title nounderline"><strong><%= request.title %></strong></h4>
+        <p class="card-text nounderline"><%= request.description %></p>
+      </div>
+    <% end %>
+    </div>
+    <% end %>
+  </div>
+  <h1>Noutras Cidades:</h1>
+  <% end %>
+  <div class="cards my-3">
+    <% @requests.each do |request| %>
+    <div class="card hoverable">
+      <%= link_to request_path(request), class: 'nounderline' do %>
+      <!-- img here -->
+      <div class="card-block text-center">
+        <h4 class="card-title nounderline"><strong><%= request.title %></strong></h4>
+        <p class="card-text nounderline"><%= request.description %></p>
+      </div>
+    <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
