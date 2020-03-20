@@ -1,0 +1,28 @@
+.banner {
+  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), asset-url('matt-collamer.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  height: 100vh;
+  border: 10px 10px 10px 10px;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 50px;
+  font-weight: bold;
+  position: relative;
+  bottom: 70px;
+}
+
+
+.btn-flat {
+  font-size: 26px;
+  background-color: #3E2657;
+  color: white;
+  padding: 20px 45px;
+  position: relative;
+  top: 350px;
+}
