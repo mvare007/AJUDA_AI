@@ -6,11 +6,11 @@ class Request < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true, length: { maximum: 500 }
-  validates :category, inclusion: { in: ["compras", "obras/reparações", "recados", "saúde", "cuidados", "donativos", "outra"] }
-  validates :person_name, presence: true
+  validates :category, inclusion: { in: ["Compras", "Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Outro"] }
   validates :age, numericality: true
   validates :address, presence: true
-  validates :zip_code, presence: true
+  validates :zip_code, presence: true, format: { with: /\d{4}\-\d{3}/, message: "Por favor introduz um Código Postal válido"}
   validates :city, presence: true
 
 end
+

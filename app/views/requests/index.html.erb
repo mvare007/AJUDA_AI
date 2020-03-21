@@ -2,6 +2,7 @@
   <%= render 'shared/map' %>
 </div>
 <div class="container-fluid">
+  <%= link_to 'Criar pedido', new_request_path, class: 'btn-vol' %>
   <% if @requests_near.count >= 1 %>
   <h1>Em <%= current_user.city %>:</h1>
   <div class="cards my-3">
@@ -20,7 +21,7 @@
   <h1>Noutras Cidades:</h1>
   <% end %>
   <div class="cards my-3">
-    <% @requests.each do |request| %>
+    <% @requests_far.each do |request| %>
     <div class="card hoverable">
       <%= link_to request_path(request), class: 'nounderline' do %>
       <!-- img here -->
