@@ -1,15 +1,16 @@
 <div class="container">
+  <%= link_to "Retroceder", :back, class: 'text-white' %>
   <h1>Novo Pedido de Ajuda</h1>
   <%= simple_form_for @request do |f| %>
-    <%= f.input :category, label: false, prompt: 'Categoria', placeholder: 'Categoria', collection: ["Compras", "Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Outro"] %>
-    <%= f.input :title, label: false, placeholder: 'Título' %>
-    <%= f.input :description, label: false, placeholder: 'Descrição' %>
+    <%= f.input :category, label: false, prompt: 'Categoria', placeholder: 'Categoria', collection: ["Compras", "Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Animais", "Denúncia", "Outro"], error: 'Por favor selecciona uma Categoria' %>
+    <%= f.input :title, label: false, placeholder: 'Título', error: 'Por favor introduz um Título' %>
+    <%= f.input :description, label: false, placeholder: 'Descrição', error: 'Por favor introduz a Descrição' %>
     <%= f.input :person_name, label: false, placeholder: 'Nome' %>
-    <%= f.input :age, label: false, placeholder: 'Idade' %>
-    <%= f.input :address, label: false, placeholder: 'Morada' %>
-    <%= f.input :zip_code, label: false, placeholder: 'Código Postal' %>
-    <%= f.input :city, label: false, placeholder: 'Cidade' %>
+    <%= f.input :age, label: false, prompt: 'Idade', collection: 18..120  %>
+    <%= f.input :address, label: false, placeholder: 'Morada', error: 'Por favor introduz a Morada (não será revelada sem a tua permissão)' %>
+    <%= f.input :zip_code, label: false, placeholder: 'Código Postal', error: "Por favor introduz um Código Postal válido (0000-000)" %>
+    <%= f.input :city, label: false, placeholder: 'Cidade', error: 'Por favor introduz a Cidade' %>
     <%= f.input :phone_number, label: false, placeholder: 'Contacto Telefónico', input_html: { maxlength: 9 } %>
-    <%= f.button :submit, class: 'btn-vol' %>
+    <%= f.submit 'Criar', class: 'btn-vol' %>
   <% end %>
 </div>

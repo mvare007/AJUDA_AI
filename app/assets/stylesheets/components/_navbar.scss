@@ -10,3 +10,24 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.btn-nav {
+color: yellow !important;
+text-transform: uppercase;
+text-decoration: none;
+background: $purple;
+padding: 10px;
+border-radius: 10px 10px 10px 10px;
+display: inline-block;
+transition: all 0.4s ease 0s;
+margin-right: 50px;
+
+}
+
+.btn-nav:hover {
+color: #ffffff !important;
+background: #f6b93b;
+border-color: #f6b93b !important;
+transition: all 0.4s ease 0s;
+text-decoration: none;
+}

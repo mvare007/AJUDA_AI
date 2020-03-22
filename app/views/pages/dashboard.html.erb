@@ -7,7 +7,13 @@
       <%= render 'shared/map' %>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-6">
-      <!-- content -->
+      <ul>
+        <% @assigned_requests.each do |request| %>
+        <li>
+          <%= request.request.title %>
+        </li>
+        <% end %>
+      </ul>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-6">
       <!-- content -->
