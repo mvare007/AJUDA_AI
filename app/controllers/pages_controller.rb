@@ -8,7 +8,14 @@ class PagesController < ApplicationController
     @requests_near = Request.where(city: current_user.city)
     @request_user = RequestUser.where(user: current_user)
     @requests = Request.geocoded
-    @markers = @requests.map do |request|
+    map(@requests)
+    @assigned_requests = RequestUser.where(user: current_user)
+  end
+
+  private
+
+  def map(requests)
+    @markers = requests.map do |request|
       {
         lat: request.latitude,
         lng: request.longitude,

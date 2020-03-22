@@ -4727,6 +4727,13 @@ jju@^1.1.0:
   resolved "https://registry.yarnpkg.com/jju/-/jju-1.4.0.tgz#a3abe2718af241a2b2904f84a625970f389ae32a"
   integrity sha1-o6vicYryQaKykE+EpiWXDzia4yo=
 
+jquery-bar-rating@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/jquery-bar-rating/-/jquery-bar-rating-1.2.2.tgz#9594d662cff9deb0fe7b372511bb2492a436f392"
+  integrity sha1-lZTWYs/53rD+ezclEbskkqQ285I=
+  dependencies:
+    jquery ">=1.7.2"
+
 "jquery-pwstrength@https://github.com/matoilic/jquery.pwstrength":
   version "0.0.0"
   resolved "https://github.com/matoilic/jquery.pwstrength#d6f07a13eba1479f481d0beceb612f439db406ae"
@@ -4748,7 +4755,7 @@ jquery.nicescroll@^3.7.6:
   dependencies:
     jquery ">=1.8.3"
 
-jquery@>=1.10, jquery@>=1.7, jquery@>=1.8.3, jquery@>=2.1.0, jquery@^3.0, jquery@^3.1.1, jquery@^3.3.1:
+jquery@>=1.10, jquery@>=1.7, jquery@>=1.7.2, jquery@>=1.8.3, jquery@>=2.1.0, jquery@^3.0, jquery@^3.1.1, jquery@^3.3.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
   integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==

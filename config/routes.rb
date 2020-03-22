@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard'
 
   resources :requests
+  resources :request_user, only: [:create]
   resources :reviews, only: [:new, :create]
 
 end
