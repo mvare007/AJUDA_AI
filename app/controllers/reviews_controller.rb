@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.request_user
+    @review.assignment
     @review.user = current_user
     if @review.save
       redirect_to new_review_path

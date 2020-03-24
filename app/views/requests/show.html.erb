@@ -47,7 +47,7 @@
     </div>
     <div class="col-sm-12 col-md-8 col-lg-6">
       <%= render 'shared/profile_card', user: @request.user %>
-      <%= link_to 'Ajudar', request_user_index_path(request: @request.id), method: :post %>
+      <%= link_to 'Quero ajudar', assignments_path(request: @request.id), method: :post %>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-6">
       <%= render 'shared/map' %>
@@ -56,3 +56,8 @@
 </div>
 
 
+<!-- 1 when request is created a new instance of assignment is created with request.id and asker and receiver id
+when a user wants to help a new assignment instance is created xxxxDONExxxxxx -->
+
+<!-- 2 the receiver will view all the assignments and select the one he wants
+ => When he selects one, the others will be destroyed  -->
