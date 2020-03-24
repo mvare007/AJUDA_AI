@@ -10,18 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_20_162559) do
+ActiveRecord::Schema.define(version: 2020_03_24_112243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "request_users", force: :cascade do |t|
+  create_table "assignments", force: :cascade do |t|
+    t.bigint "asker_id"
+    t.bigint "receiver_id"
     t.bigint "request_id"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["request_id"], name: "index_request_users_on_request_id"
-    t.index ["user_id"], name: "index_request_users_on_user_id"
+    t.index ["asker_id"], name: "index_assignments_on_asker_id"
+    t.index ["receiver_id"], name: "index_assignments_on_receiver_id"
+    t.index ["request_id"], name: "index_assignments_on_request_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -47,10 +49,10 @@ ActiveRecord::Schema.define(version: 2020_03_20_162559) do
     t.text "content"
     t.integer "rating"
     t.bigint "user_id"
-    t.bigint "request_user_id"
+    t.bigint "assignment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["request_user_id"], name: "index_reviews_on_request_user_id"
+    t.index ["assignment_id"], name: "index_reviews_on_assignment_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -73,9 +75,10 @@ ActiveRecord::Schema.define(version: 2020_03_20_162559) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "request_users", "requests"
-  add_foreign_key "request_users", "users"
+  add_foreign_key "assignments", "requests"
+  add_foreign_key "assignments", "users", column: "asker_id"
+  add_foreign_key "assignments", "users", column: "receiver_id"
   add_foreign_key "requests", "users"
-  add_foreign_key "reviews", "request_users"
+  add_foreign_key "reviews", "assignments"
   add_foreign_key "reviews", "users"
 end

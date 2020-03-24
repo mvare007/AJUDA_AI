@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :reviews
   has_many :requests
+  has_many :assignments_as_asker, source: :assignment, foreign_key: :asker_id
+  has_many :assignments_as_receiver, source: :assignment, foreign_key: :receiver_id
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -13,10 +15,10 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :zip_code, presence: true
   validates :city, presence: true
-  validates :about_me, presence: true, length: { maximum: 300 }
+  validates :about_me, length: { maximum: 300 }
 
 
   def full_name
-    "#{self.first_name}" + " " + "#{self.last_name}"
+    "#{self.first_name.capitalize}" + " " + "#{self.last_name.capitalize}"
   end
 end

@@ -4,8 +4,7 @@ class RequestsController < ApplicationController
   def index
     @requests_near = Request.where(city: current_user.city)
     @requests_far = Request.where.not(city: current_user.city).geocoded
-    @requests = Request.geocoded
-    map_markers(@requests)
+    map_markers
   end
 
   def show
@@ -51,12 +50,13 @@ class RequestsController < ApplicationController
     @request = params.require(:request).permit(:title, :description, :category, :person_name, :age, :address, :zip_code, :city, :phone_number)
   end
 
-  def map_markers(marker)
-    @markers = marker.map do |marker|
+  def map_markers
+    @requests = Request.geocoded
+    @markers = @requests.map do |request|
       {
-        lat: marker.latitude,
-        lng: marker.longitude,
-        infoWindow: render_to_string(partial: "shared/info_window", locals: { request: marker })
+        lat: request.latitude,
+        lng: request.longitude,
+        infoWindow: render_to_string(partial: "shared/info_window", locals: { request: request })
       }
     end
   end
