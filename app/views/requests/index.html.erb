@@ -18,10 +18,10 @@
     </div>
     <% end %>
   </div>
-  <h1>Noutras Cidades:</h1>
+  <h1>Todos:</h1>
   <% end %>
   <div class="cards my-3">
-    <% @requests_far.each do |request| %>
+    <% @requests.each do |request| %>
     <div class="card hoverable">
       <%= link_to request_path(request), class: 'nounderline' do %>
       <%= image_tag "https://source.unsplash.com/random", class: "card-img-top"  %>

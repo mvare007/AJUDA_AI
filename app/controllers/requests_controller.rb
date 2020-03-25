@@ -1,9 +1,9 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit]
+  before_action :set_request, only: [:show, :edit, :update]
 
   def index
     @requests_near = Request.where(city: current_user.city)
-    @requests_far = Request.where.not(city: current_user.city).geocoded
+    @requests = Request.all
     map_markers
   end
 
@@ -19,7 +19,7 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @request.user = current_user
     if @request.save
-      redirect_to request_path(@request)
+      redirect_to request_path(@request), notice: "O teu pedido foi criado"
     else
       render :new
     end
@@ -29,8 +29,10 @@ class RequestsController < ApplicationController
   end
 
   def update
-    if @request.update(request_params)
-      redirect_to request_path(@request)
+    @volunteer = User.find(params[:user])
+    @request.update(volunteer_id: @volunteer.id)
+    if @request.save
+      redirect_to request_path(@request), notice: 'Okkkkkkkkkkkkkkkkkkkkkkkkkkkk'
     else
       render :edit
     end
@@ -47,12 +49,12 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    @request = params.require(:request).permit(:title, :description, :category, :person_name, :age, :address, :zip_code, :city, :phone_number)
+    @request = params.require(:request).permit(:title, :description, :category, :person_name, :age, :address, :zip_code, :city, :phone_number, :volunteer_id, :user)
   end
 
   def map_markers
-    @requests = Request.geocoded
-    @markers = @requests.map do |request|
+    @requests_geo = Request.geocoded
+    @markers = @requests_geo.map do |request|
       {
         lat: request.latitude,
         lng: request.longitude,
