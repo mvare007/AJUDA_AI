@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :requests
   has_many :assignments_as_asker, source: :assignment, foreign_key: :asker_id
-  has_many :assignments_as_receiver, source: :assignment, foreign_key: :receiver_id
+  has_many :requests_as_volunteer, source: :request, foreign_key: :volunteer_id
+
 
   validates :first_name, presence: true
   validates :last_name, presence: true

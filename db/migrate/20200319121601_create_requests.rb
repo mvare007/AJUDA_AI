@@ -12,6 +12,7 @@ class CreateRequests < ActiveRecord::Migration[5.2]
       t.string :phone_number
       t.boolean :completed, default:false
       t.references :user, foreign_key: true
+      t.references :volunteer, foreign_key: { to_table: :users }
 
       t.timestamps
     end

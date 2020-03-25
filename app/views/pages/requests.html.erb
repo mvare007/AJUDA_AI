@@ -1,0 +1,20 @@
+<h1>Meus Pedidos</h1>
+<div class="cards my-3">
+  <% @requests.each do |request| %>
+  <div class="card hoverable">
+    <%= link_to request_path(request), class: 'nounderline' do %>
+    <%= image_tag "https://source.unsplash.com/random", class: "card-img-top"  %>
+    <div class="card-block text-center">
+      <h4 class="card-title nounderline"><strong><%= request.title %></strong></h4>
+      <p class="card-text nounderline"><%= request.description %></p>
+      <div>
+        <% request.assignments.each do |assignment| %>
+        <%= link_to assignment.asker.full_name, user_path(assignment.asker) %>
+        <%= link_to 'Select', request_path(id: request, user: assignment.asker), method: :patch %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <% end %>
+</div>

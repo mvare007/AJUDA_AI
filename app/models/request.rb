@@ -1,5 +1,6 @@
 class Request < ApplicationRecord
   belongs_to :user
+  has_one :volunteer
   has_one :review
   has_many :assignments
   geocoded_by :address
@@ -15,6 +16,5 @@ class Request < ApplicationRecord
   def completo
     self.completed ? "Sim" : "Não"
   end
-
 end
 

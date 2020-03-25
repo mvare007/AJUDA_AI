@@ -4,6 +4,10 @@ class PagesController < ApplicationController
   def home
   end
 
+  def requests
+    @requests = current_user.requests
+  end
+
   private
 
   def map(requests)
@@ -15,4 +19,6 @@ class PagesController < ApplicationController
       }
     end
   end
+
 end
+

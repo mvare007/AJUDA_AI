@@ -2,7 +2,7 @@ class AssignmentsController < ApplicationController
 
   def create
     @request = Request.find(params[:request])
-    @assignment = Assignment.new(asker: current_user, receiver: @request.user, request: @request)
+    @assignment = Assignment.new(asker: current_user, request: @request)
     if @assignment.save
       redirect_to request_path(@request), notice: 'Foi enviado o pedido'
     else

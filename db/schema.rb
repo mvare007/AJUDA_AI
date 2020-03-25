@@ -17,12 +17,10 @@ ActiveRecord::Schema.define(version: 2020_03_24_112243) do
 
   create_table "assignments", force: :cascade do |t|
     t.bigint "asker_id"
-    t.bigint "receiver_id"
     t.bigint "request_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["asker_id"], name: "index_assignments_on_asker_id"
-    t.index ["receiver_id"], name: "index_assignments_on_receiver_id"
     t.index ["request_id"], name: "index_assignments_on_request_id"
   end
 
@@ -38,21 +36,23 @@ ActiveRecord::Schema.define(version: 2020_03_24_112243) do
     t.string "phone_number"
     t.boolean "completed", default: false
     t.bigint "user_id"
+    t.bigint "volunteer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_requests_on_user_id"
+    t.index ["volunteer_id"], name: "index_requests_on_volunteer_id"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.text "content"
     t.integer "rating"
     t.bigint "user_id"
-    t.bigint "assignment_id"
+    t.bigint "request_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["assignment_id"], name: "index_reviews_on_assignment_id"
+    t.index ["request_id"], name: "index_reviews_on_request_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(version: 2020_03_24_112243) do
 
   add_foreign_key "assignments", "requests"
   add_foreign_key "assignments", "users", column: "asker_id"
-  add_foreign_key "assignments", "users", column: "receiver_id"
   add_foreign_key "requests", "users"
-  add_foreign_key "reviews", "assignments"
+  add_foreign_key "requests", "users", column: "volunteer_id"
+  add_foreign_key "reviews", "requests"
   add_foreign_key "reviews", "users"
 end
