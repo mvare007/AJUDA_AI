@@ -29,10 +29,9 @@ class RequestsController < ApplicationController
   end
 
   def update
-    @volunteer = User.find(params[:user])
-    @request.update(volunteer_id: @volunteer.id)
-    if @request.save
-      redirect_to request_path(@request), notice: 'Okkkkkkkkkkkkkkkkkkkkkkkkkkkk'
+    @request.update(request_params)
+    if @request.save(request_params)
+      redirect_to user_requests_path, notice: "Pedido modificado com sucesso"
     else
       render :edit
     end
@@ -49,7 +48,7 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    @request = params.require(:request).permit(:title, :description, :category, :person_name, :age, :address, :zip_code, :city, :phone_number, :volunteer_id, :user)
+    params.require(:request).permit(:title, :description, :category, :person_name, :age, :address, :zip_code, :city, :phone_number, :volunteer_id )
   end
 
   def map_markers
