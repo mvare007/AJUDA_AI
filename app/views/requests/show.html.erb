@@ -3,6 +3,9 @@
   <div class="row bg-light h-100">
     <div class="col-sm-12 col-md-8 col-lg-6">
       <h1><strong><%= @request.title %></strong></h1>
+      <%= link_to request_favorite_path(@request) do %>
+        <i class="far fa-star"></i>
+      <% end %>
       <h5><%= @request.description %></h5>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-6">
@@ -12,7 +15,7 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <!-- content -->
+      <!-- TODO -->
     </div>
     <div class="col-sm-12 col-md-8 col-lg-6">
       <div class="carousel">

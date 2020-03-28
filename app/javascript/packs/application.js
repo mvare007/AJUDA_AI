@@ -12,6 +12,9 @@ import { initStarRating } from '../plugins/init_star_rating';
 
 initStarRating();
 
+
+// Landing page carousel
+
  $('#myCarousel').carousel({
     interval: 2500,
  });
