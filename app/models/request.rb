@@ -2,9 +2,10 @@ class Request < ApplicationRecord
   belongs_to :user
   has_one :volunteer
   has_one :review
-  has_many :assignments
+  has_many :assignments, dependent: :destroy
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+  acts_as_favoritable
 
   validates :title, presence: true
   validates :description, presence: true, length: { maximum: 500 }

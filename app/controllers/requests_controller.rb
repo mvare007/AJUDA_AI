@@ -1,9 +1,10 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit, :update]
+  before_action :set_request, only: [:show, :edit, :update, :destroy]
 
   def index
     @requests_near = Request.where(city: current_user.city)
     @requests = Request.all
+    @request = Request.new
     map_markers
   end
 
@@ -11,17 +12,13 @@ class RequestsController < ApplicationController
     single_map_marker
   end
 
-  def new
-    @request = Request.new
-  end
-
   def create
     @request = Request.new(request_params)
     @request.user = current_user
     if @request.save
-      redirect_to request_path(@request), notice: "O teu pedido foi criado"
+      redirect_to request_path(@request), notice: "Pedido criado com sucesso"
     else
-      render :new
+      redirect_to requests_path
     end
   end
 
@@ -29,16 +26,23 @@ class RequestsController < ApplicationController
   end
 
   def update
-    @request.update(request_params)
-    if @request.save(request_params)
-      redirect_to user_requests_path, notice: "Pedido modificado com sucesso"
-    else
-      render :edit
-    end
+   redirect_to user_requests_path if @request.update(request_params)
   end
 
   def destroy
     @request.destroy
+    redirect_to user_requests_path, notice: "Pedido eliminado com sucesso"
+  end
+
+  def favorite
+    @request = Request.find(params[:request_id])
+    if !current_user.favorited?(@request)
+      current_user.favorite(@request)
+      redirect_to @request, notice: "O pedido '#{@request.title}' foi adicionado aos teus favoritos"
+    else
+      current_user.unfavorite(@request)
+      redirect_to @request, notice: "O pedido '#{@request.title}' foi removido dos teus favoritos"
+    end
   end
 
   private
@@ -48,7 +52,7 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:title, :description, :category, :person_name, :age, :address, :zip_code, :city, :phone_number, :volunteer_id )
+    @request = params.require(:request).permit(:title, :description, :category, :person_name, :age, :address, :zip_code, :city, :phone_number, :volunteer_id )
   end
 
   def map_markers

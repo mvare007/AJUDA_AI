@@ -12,13 +12,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/home";
-@import "pages/dashboard";
+@import "pages/request";
 @import "requests/index";
 @import "requests/show";
-@import "requests/new";
 
 body {
-  background: #41295a;
   background: -webkit-linear-gradient(to right, #2F0743, #41295a);
   background: linear-gradient(to right, #2F0743, #41295a);
 }
@@ -45,4 +43,8 @@ background: #f6b93b;
 border-color: #f6b93b !important;
 transition: all 0.4s ease 0s;
 text-decoration: none;
+}
+
+.modal-content {
+  background-color: $purple;
 }

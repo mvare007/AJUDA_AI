@@ -1,8 +1,26 @@
 <div class="container-wide mb-5">
   <%= render 'shared/map' %>
 </div>
+
 <div class="container-fluid">
-  <%= link_to 'Criar pedido', new_request_path, class: 'btn-vol' %>
+
+  <button type="button" class="btn-vol" data-toggle="modal" data-target="#exampleModal">Criar Pedido</button>
+  <!-- Modal -->
+  <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title text-white" id="exampleModalLabel"><strong>Novo Pedido</strong></h4>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render 'shared/request_form', request: @request %>
+        </div>
+      </div>
+    </div>
+  </div>
   <% if @requests_near.count >= 1 %>
   <h1>Em <%= current_user.city %>:</h1>
   <div class="cards my-3">
