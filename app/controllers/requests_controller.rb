@@ -52,7 +52,7 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    @request = params.require(:request).permit(:title, :description, :category, :person_name, :age, :address, :zip_code, :city, :phone_number, :volunteer_id )
+    @request = params.require(:request).permit(:title, :description, :category, :person_name, :age, :address, :zip_code, :city, :phone_number, :volunteer_id, :completed )
   end
 
   def map_markers
