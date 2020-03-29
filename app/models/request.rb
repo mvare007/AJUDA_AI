@@ -17,5 +17,9 @@ class Request < ApplicationRecord
   def completo
     self.completed ? "Sim" : "Não"
   end
+
+  def volunteer
+    User.find(self.volunteer_id)
+  end
 end
 
