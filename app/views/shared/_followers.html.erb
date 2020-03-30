@@ -1,0 +1,8 @@
+<span id="settingsFollowers">Seguidores: <%= @user.favoritors(scope: :follow).count %></span>
+<div id="panelFollowers">
+  <ul>
+    <% @user.favoritors(scope: :follow).each do |followers| %>
+      <%= render 'shared/profile_card', user: followers %>
+    <% end %>
+  </ul>
+</div>
