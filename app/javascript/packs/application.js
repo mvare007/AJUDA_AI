@@ -18,3 +18,18 @@ initStarRating();
  $('#myCarousel').carousel({
     interval: 2500,
  });
+
+
+$(function() {
+    $('#settingsFollowing').click(function(e) {
+      $('#panelFollowing').toggle();
+    });
+});
+
+
+$(function() {
+    $('#settingsFollowers ').click(function(e) {
+        $('#panelFollowers').toggle();
+    });
+});
+

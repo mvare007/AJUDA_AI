@@ -2,29 +2,10 @@
   <%= render 'shared/profile_card', user: @user %>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-6">
-      <table class="table table-hover table-dark text-center">
-        <thead>
-          <tr>
-            <th scope="col">Título</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Finalizado</th>
-            <th scope="col">Voluntários</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @user_requests.each do |request| %>
-          <tr>
-            <td><%= request.title %></td>
-            <td><%= request.category %></td>
-            <td><%= request.completo %></td>
-            <td><%= request.assignments.count %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render 'shared/following' %>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-6">
-      <!-- content -->
+      <%= render 'shared/followers' %>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-6">
       <!-- content -->

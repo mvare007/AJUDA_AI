@@ -1,0 +1,8 @@
+<span id="settingsFollowing">A seguir: <%= @user.all_favorited(scope: :follow).count %></span>
+<div id="panelFollowing">
+  <ul>
+    <% @user.all_favorited(scope: :follow).each do |following| %>
+      <%= render 'shared/profile_card', user: following %>
+    <% end %>
+  </ul>
+</div>
