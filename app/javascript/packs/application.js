@@ -20,6 +20,7 @@ initStarRating();
  });
 
 
+
 $(function() {
     $('#settingsFollowing').click(function(e) {
       $('#panelFollowing').toggle();
@@ -30,6 +31,13 @@ $(function() {
 $(function() {
     $('#settingsFollowers ').click(function(e) {
         $('#panelFollowers').toggle();
+    });
+});
+
+
+$(function() {
+    $('#settingsUserRequests').click(function(e) {
+        $('#panelUserRequests').toggle();
     });
 });
 

@@ -1,0 +1,10 @@
+<div class="card hoverable">
+  <%= link_to request_path(request), class: 'nounderline' do %>
+  <%= image_tag "https://source.unsplash.com/random", class: "card-img-top"  %>
+  <div class="card-block text-center">
+    <h4 class="card-title nounderline"><strong><%= request.title %></strong></h4>
+    <p class="text-muted"><%= request.city %></p>
+    <p class="card-text nounderline"><%= request.description %></p>
+  </div>
+  <% end %>
+</div>

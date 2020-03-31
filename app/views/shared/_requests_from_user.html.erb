@@ -1,0 +1,9 @@
+<h1 id="userRequests"><%= @user.all_favorited(scope: :follow).count %></h1>
+<span id="settingsUserRequests">Pedidos</span>
+<div id="panelUserRequests">
+  <ul>
+    <% @user.requests.each do |request| %>
+      <%= render 'shared/request_card', request: request %>
+    <% end %>
+  </ul>
+</div>

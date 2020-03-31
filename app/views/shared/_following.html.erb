@@ -1,4 +1,5 @@
-<span id="settingsFollowing">A seguir: <%= @user.all_favorited(scope: :follow).count %></span>
+<h1 id="follow"><%= @user.all_favorited(scope: :follow).count %></h1>
+<span id="settingsFollowing">A seguir</span>
 <div id="panelFollowing">
   <ul>
     <% @user.all_favorited(scope: :follow).each do |following| %>
