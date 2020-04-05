@@ -13,7 +13,7 @@ import { initStarRating } from '../plugins/init_star_rating';
 initStarRating();
 
 
-// Landing page carousel
+// Request show page image carousel
 
  $('#myCarousel').carousel({
     interval: 2500,
@@ -21,11 +21,22 @@ initStarRating();
 
 
 
+
+// User Show Profile Card
+
 $(function() {
     $('#settingsFollowing').click(function(e) {
       $('#panelFollowing').toggle();
     });
 });
+
+const setFollowing = document.getElementById("settingsFollowing")
+const following = document.getElementById("panelFollowing")
+  setFollowing.addEventListener('click', (event) => {
+    following.classList.add("swing-in-top-fwd");
+});
+
+
 
 
 $(function() {
@@ -34,6 +45,13 @@ $(function() {
     });
 });
 
+const setFollowers = document.getElementById("settingsFollowers");
+const followers = document.getElementById("panelFollowers");
+  setFollowers.addEventListener('click', (event) => {
+    followers.classList.add("swing-in-top-fwd");
+});
+
+
 
 $(function() {
     $('#settingsUserRequests').click(function(e) {
@@ -41,3 +59,8 @@ $(function() {
     });
 });
 
+const setUserRequests = document.getElementById("settingsUserRequests")
+const userRequests = document.getElementById("panelUserRequests")
+  setUserRequests.addEventListener('click', (event) => {
+    userRequests.classList.add("swing-in-top-fwd");
+});

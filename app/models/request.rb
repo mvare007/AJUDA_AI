@@ -3,6 +3,7 @@ class Request < ApplicationRecord
   has_one :volunteer
   has_one :review
   has_many :assignments, dependent: :destroy
+  has_many_attached :photos
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
   acts_as_favoritable

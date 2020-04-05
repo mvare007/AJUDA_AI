@@ -2,7 +2,9 @@
   <%= render 'shared/user_show_card', user: @user %>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-6">
-      <!-- content -->
+      <% if @user == current_user %>
+        <%= render 'shared/bookmarked' %>
+      <% end %>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-6">
       <!-- content -->

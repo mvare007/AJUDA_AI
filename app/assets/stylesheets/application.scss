@@ -23,8 +23,9 @@ body {
 
 .hoverable:hover {
   opacity: 0.9;
-  color: yellow;
+  color: lightyellow;
 }
+
 
 .btn-vol {
 color: black !important;
@@ -48,4 +49,5 @@ text-decoration: none;
 .modal-content {
   background-color: $purple;
 }
+
 
