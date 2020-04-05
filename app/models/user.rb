@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :requests
   has_many :assignments_as_asker, source: :assignment, foreign_key: :asker_id
   has_many :requests_as_volunteer, source: :request, foreign_key: :volunteer_id
+  has_one_attached :photo
   acts_as_favoritor
   acts_as_favoritable
 
@@ -15,7 +16,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :birth_date, presence: true
   validates :address, presence: true
-  validates :zip_code, presence: true
+  validates :zip_code, presence: true, format: { with: /\d{4}\-\d{3}/}
   validates :city, presence: true
   validates :about_me, length: { maximum: 300 }
 

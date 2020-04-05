@@ -19,7 +19,11 @@
         </li>
         <li class="nav-item dropdown mx-3">
           <%= link_to "Perfil", user_path(current_user), class: "btn-nav nav-link hoverable" %>
-          <%= image_tag "https://eu.ui-avatars.com/api/?name=#{current_user.full_name.gsub(" ", "+")}", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= image_tag "https://eu.ui-avatars.com/api/?name=#{current_user.full_name.gsub(" ", "+")}", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Definições", "#", class: "dropdown-item" %>
             <%= link_to "Meus pedidos", user_requests_path, class: "dropdown-item" %>

@@ -10,7 +10,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :last_name
       t.date :birth_date
       t.text :address
-      t.integer :zip_code
+      t.string :zip_code
       t.string :city
       t.text :about_me
 

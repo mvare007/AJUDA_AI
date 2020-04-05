@@ -8,7 +8,6 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.4.1'
 gem 'redis'
-gem 'turbolinks_render'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.12.0'
@@ -18,6 +17,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'geocoder'
 gem 'acts_as_favoritor'
+gem 'cloudinary', '~> 1.12.0'
 
 
 group :development do
