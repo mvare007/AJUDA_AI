@@ -12,6 +12,10 @@ import { initStarRating } from '../plugins/init_star_rating';
 
 initStarRating();
 
+import { scrollLastMessageIntoView } from '../plugins/scroll'
+
+scrollLastMessageIntoView();
+
 
 // Request show page image carousel
 
