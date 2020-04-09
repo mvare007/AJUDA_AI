@@ -4,15 +4,18 @@ Rails.application.routes.draw do
     get 'follow', to: 'users#follow', as: 'follow'
   end
 
-
   root to: 'pages#home'
   get '/user/requests/', to: 'pages#requests', as: 'user_requests'
+
+  resources :assignments, only: [:create, :destroy]
+  resources :reviews, only: [:new, :create]
 
   resources :requests do
     get 'favorite', to: 'requests#favorite', as: 'favorite'
   end
 
-  resources :assignments, only: [:create, :destroy]
-  resources :reviews, only: [:new, :create]
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 
 end
