@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :requests
   has_many :assignments_as_asker, source: :assignment, foreign_key: :asker_id
   has_many :requests_as_volunteer, source: :request, foreign_key: :volunteer_id
+  has_many :messages
   has_one_attached :photo
   acts_as_favoritor
   acts_as_favoritable
