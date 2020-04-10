@@ -22,12 +22,18 @@
 }
 
 .message-content {
-  background-color: #F9F5DA;
+  background-color: #E4CAF7;
   border-radius: 3px;
   margin: 0 10px;
   padding: 11px 10px 8px 10px;
+  cursor: text;
+  word-break: break-all;
+  overflow: visible;
+  white-space: normal;
+  height:auto;
 }
-.avatar {
+
+.avatar-chat {
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -44,9 +50,9 @@
 }
 
 input.form-control {
-  border: 1px solid #ECECEC;
+  border: 1px solid $purple;
   box-shadow: none;
-  font-size: 14px;
+  font-size: 18px;
   color: #868686;
   &:focus {
     outline: none;
@@ -62,5 +68,14 @@ input.form-control {
   margin-top: 10px;
   h4 {
     margin: 0;
+  }
+}
+
+#emoji-button {
+  font-size: 28px;
+  cursor: pointer;
+  &:hover {
+    color: $purple;
+    opacity: 0.8;
   }
 }

@@ -1,8 +1,8 @@
 <div class="message <%= "right" if user_is_messages_author %>">
   <% if message.user.photo.attached? %>
-    <%= cl_image_tag message.user.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face, class: 'avatar rounded-circle hoverable my-2' %>
+    <%= cl_image_tag message.user.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face, class: 'avatar-chatrounded-circle hoverable my-2' %>
   <% else %>
-    <img class="avatar rounded-circle my-2" src="https://eu.ui-avatars.com/api/?name=<%= message.user.full_name.gsub(" ", "+") %>}" alt="Bologna">
+    <img class="avatar-chat rounded-circle my-2" src="https://eu.ui-avatars.com/api/?name=<%= message.user.full_name.gsub(" ", "+") %>}" alt="Bologna">
   <% end %>
   <div class="message-content"><%= emojify message.content %></div>
 </div>

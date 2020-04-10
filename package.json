@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",
+    "@joeattardi/emoji-button": "^2.12.1",
     "@mapbox/mapbox-gl-geocoder": "^4.5.1",
     "@rails/webpacker": "4.2.2",
     "bootstrap": "^4.2.1",
