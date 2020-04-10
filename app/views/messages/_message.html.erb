@@ -4,5 +4,5 @@
   <% else %>
     <img class="avatar rounded-circle my-2" src="https://eu.ui-avatars.com/api/?name=<%= message.user.full_name.gsub(" ", "+") %>}" alt="Bologna">
   <% end %>
-  <div class="message-content"><%= message.content %></div>
+  <div class="message-content"><%= emojify message.content %></div>
 </div>
