@@ -3,6 +3,8 @@ class Message < ApplicationRecord
   belongs_to :user
   after_create :broadcast_message
 
+  validates :content, presence: true, allow_blank: false, length: { maximum: 200 }
+
   def from?(some_user)
     user == some_user
   end

@@ -12,18 +12,11 @@ import { initStarRating } from '../plugins/init_star_rating';
 
 initStarRating();
 
-import { scrollLastMessageIntoView } from '../plugins/scroll'
-
-scrollLastMessageIntoView();
-
-
 // Request show page image carousel
 
  $('#myCarousel').carousel({
     interval: 2500,
  });
-
-
 
 
 // User Show Profile Card
@@ -39,7 +32,6 @@ const following = document.getElementById("panelFollowing")
   setFollowing.addEventListener('click', (event) => {
     following.classList.add("swing-in-top-fwd");
 });
-
 
 
 

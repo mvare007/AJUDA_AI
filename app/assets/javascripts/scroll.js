@@ -5,6 +5,4 @@ const scrollLastMessageIntoView = () => {
   if (lastMessage !== undefined) {
     lastMessage.scrollIntoView();
   }
-};
-
-export { scrollLastMessageIntoView };
+}
