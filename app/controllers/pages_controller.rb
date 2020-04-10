@@ -6,6 +6,7 @@ class PagesController < ApplicationController
 
   def requests
     @requests = current_user.requests
+    @new_request = Request.new
   end
 
   private

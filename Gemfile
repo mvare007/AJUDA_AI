@@ -18,7 +18,7 @@ gem 'webpacker'
 gem 'geocoder'
 gem 'acts_as_favoritor'
 gem 'cloudinary', '~> 1.12.0'
-
+gem 'gemoji'
 
 group :development do
   gem 'faker'

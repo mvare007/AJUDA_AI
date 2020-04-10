@@ -1,16 +1,21 @@
 import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+require("emoji/emoji");
 
+// Map
 
 import { initMapbox } from '../plugins/init_mapbox';
 
 initMapbox();
 
 
+// Review Star Rating
+
 import { initStarRating } from '../plugins/init_star_rating';
 
 initStarRating();
+
 
 // Request show page image carousel
 
@@ -57,6 +62,8 @@ $(function() {
 
 const setUserRequests = document.getElementById("settingsUserRequests")
 const userRequests = document.getElementById("panelUserRequests")
-  setUserRequests.addEventListener('click', (event) => {
+  setUserRequests.addEvent
+  Listener('click', (event) => {
     userRequests.classList.add("swing-in-top-fwd");
 });
+
