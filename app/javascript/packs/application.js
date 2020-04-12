@@ -1,31 +1,27 @@
 import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
-require("emoji/emoji");
 
 // Map
-
 import { initMapbox } from '../plugins/init_mapbox';
-
 initMapbox();
 
+// Emoji Picker
+import { emojiPicker } from '../emoji/emoji';
+emojiPicker();
 
 // Review Star Rating
-
 import { initStarRating } from '../plugins/init_star_rating';
-
 initStarRating();
 
 
 // Request show page image carousel
-
  $('#myCarousel').carousel({
     interval: 2500,
  });
 
 
 // User Show Profile Card
-
 $(function() {
     $('#settingsFollowing').click(function(e) {
       $('#panelFollowing').toggle();
