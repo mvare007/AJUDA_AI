@@ -10,12 +10,14 @@ class RequestsController < ApplicationController
 
   def show
     single_map_marker
+    @chatroom = Chatroom.where(name: @request.title)
   end
 
   def create
     @request = Request.new(request_params)
+    @chatroom = Chatroom.new(name: @request.title)
     @request.user = current_user
-    if @request.save
+    if @request.save && @chatroom.save
       redirect_to request_path(@request), notice: "Pedido criado com sucesso"
     else
       redirect_to requests_path
