@@ -42,8 +42,7 @@ $(function() {
 const setUserRequests = document.getElementById("settingsUserRequests")
 const userRequests = document.getElementById("panelUserRequests")
 if (setUserRequests && userRequests) {
-  setUserRequests.addEvent
-  Listener('click', (event) => {
+  setUserRequests.addEventListener('click', (event) => {
     userRequests.classList.add("swing-in-top-fwd");
   });
 };

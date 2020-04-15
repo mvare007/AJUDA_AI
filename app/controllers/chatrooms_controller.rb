@@ -3,11 +3,6 @@ class ChatroomsController < ApplicationController
     @chatrooms = Chatroom.includes(messages: :user).all
   end
 
-  # def create
-  #   @chatroom = Chatroom.new(name: 'test')
-  #   redirect to @chatroom if @chatroom.save
-  # end
-
   def show
     @chatroom = Chatroom.includes(messages: :user).find(params[:id])
   end
