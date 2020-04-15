@@ -1,7 +1,12 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="container-lg">
+  <div class="row mt-5">
     <div class="col-sm-12 col-md-8 col-lg-8">
       <%= render 'requests/photos_carousel' %>
+      <h1><strong><%= @request.title %></strong></h1>
+      <%= link_to request_favorite_path(@request) do %>
+        <i class="far fa-star"></i>
+      <% end %>
+      <h5><%= @request.description %></h5>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-4">
       <%= render 'shared/profile_card', user: @request.user %>
@@ -10,14 +15,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-8">
-      <h1><strong><%= @request.title %></strong></h1>
-      <%= link_to request_favorite_path(@request) do %>
-        <i class="far fa-star"></i>
-      <% end %>
-      <h5><%= @request.description %></h5>
-    </div>
-    <div class="col-sm-12 col-md-8 col-lg-4">
+    <div class="col-sm-12 col-md-8 col-lg-6">
       <%= render 'chatrooms/show' %>
     </div>
   </div>
