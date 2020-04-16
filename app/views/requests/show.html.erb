@@ -1,27 +1,27 @@
-<div class="container-fluid">
-  <%= link_to "Retroceder", requests_path, class: 'text-white' %>
-  <div class="row bg-light h-100">
-    <div class="col-sm-12 col-md-8 col-lg-6">
+<div class="container-lg">
+  <div class="row mt-5">
+    <div class="col-sm-12 col-md-8 col-lg-8">
+      <%= render 'requests/photos_carousel' %>
       <h1><strong><%= @request.title %></strong></h1>
       <%= link_to request_favorite_path(@request) do %>
         <i class="far fa-star"></i>
       <% end %>
       <h5><%= @request.description %></h5>
     </div>
-    <div class="col-sm-12 col-md-8 col-lg-6">
+    <div class="col-sm-12 col-md-8 col-lg-4">
       <%= render 'shared/profile_card', user: @request.user %>
       <%= link_to 'Quero ajudar', assignments_path(request: @request.id), method: :post, class: 'btn btn-block btn-vol' %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <!-- TODO -->
-    </div>
-    <div class="col-sm-12 col-md-8 col-lg-6">
-      <%= render 'requests/photos_carousel' %>
-    </div>
-    <div class="col-sm-12 col-md-8 col-lg-6">
       <%= render 'shared/map' %>
     </div>
   </div>
+  <div class="row">
+  <% if @request.volunteer_id == current_user.id %>
+    <div class="col-sm-12 col-md-8 col-lg-6">
+      <%= render 'chatrooms/show' %>
+    </div>
+  <% end %>
+  </div>
 </div>
+
+
+
