@@ -2,7 +2,7 @@ class Request < ApplicationRecord
   belongs_to :user
   has_one :volunteer
   has_one :review
-  has_one :chatroom
+  has_one :chatroom, dependent: :destroy
   has_many :assignments, dependent: :destroy
   has_many_attached :photos
   geocoded_by :address
