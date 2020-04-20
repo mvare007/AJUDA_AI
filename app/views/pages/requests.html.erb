@@ -31,9 +31,6 @@
       <div class="card-block text-center">
         <h4 class="card-title nounderline"><strong><%= request.title %></strong></h4>
         <p class="card-text nounderline mb-4"><%= request.description %></p>
-        <% if request.volunteer_id %>
-        <p>Voluntário: <%= request.volunteer.full_name %></p>
-        <% end %>
         <%= link_to 'Eliminar', request_path(request), method: :delete, data: {confirm:'Confirmar eliminação?'}, class: 'btn-vol' %>
 
         <button type="button" class="btn-vol" data-toggle="modal" data-target="#editModal-<%= request.id %>">Editar</button>
@@ -54,13 +51,7 @@
           </div>
         </div>
         <div class="w-50 mx-auto">
-          <% unless request.assignments.empty?  %>
-            <%= simple_form_for request do |f| %>
-            <%= f.input :volunteer_id, label: false, prompt: "#{"Voluntário".pluralize(request.assignments.count)} #{request.assignments.count}", collection: request.assignments.map{|assignment| assignment.asker.id}, label_method: lambda { |id| User.find(id).full_name} %>
-            <%= f.input :completed, as: :hidden, input_html: {value: true}  %>
-            <%= f.submit 'Seleccionar', class: 'btn btn-block btn-warning' %>
-            <% end %>
-          <% end %>
+
         </div>
       </div>
     <% end %>

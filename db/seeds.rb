@@ -1,11 +1,13 @@
-puts "A apagar a base de dados..."
+puts "Destroying the DB!"
 
 Review.destroy_all
 Assignment.destroy_all
 Request.destroy_all
 User.destroy_all
+Volunteer.destroy_all
 
-puts "A criar 10 users e 10 pedidos"
+
+puts "Creating 10 users & 10 requests"
 
 10.times do
   user = User.create!(
@@ -35,7 +37,7 @@ puts "A criar 10 users e 10 pedidos"
   )
 end
 
-puts "A criar demo user"
+puts "Creating demo user"
 
   User.create!(
     email: 'demo@demo.pt',
@@ -60,3 +62,12 @@ puts "A criar demo user"
     phone_number: Faker::PhoneNumber.cell_phone,
     user: User.all.sample
   )
+
+puts "Creating 20 assignments"
+
+20.times do
+  Assignment.create!(
+    request: Request.all.sample,
+    asker: User.all.sample
+  )
+end

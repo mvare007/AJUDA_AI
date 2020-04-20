@@ -54,7 +54,7 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    @request = params.require(:request).permit(:title, :description, :category, :person_name, :age, :address, :zip_code, :city, :phone_number, :volunteer_id, :completed, photos: [] )
+    @request = params.require(:request).permit(:title, :description, :category, :person_name, :age, :address, :zip_code, :city, :phone_number, :volunteer, :completed, photos: [] )
   end
 
   def map_markers
