@@ -1,4 +1,4 @@
 class Volunteer < ApplicationRecord
-  belongs_to :assignment
   belongs_to :request
+  has_many :assignments
 end

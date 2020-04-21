@@ -10,7 +10,23 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def update
+    @assignment = Assignment.find(params[:id])
+    @assignment.update(assignment_params)
+    if @assignment.save
+      redirect_to user_requests_path, notice: 'Success'
+    else
+      redirect_to user_requests_path, notice: 'Failed'
+    end
+  end
+
   def destroy
 
+  end
+
+  private
+
+  def assignment_params
+    params.require(:assignment).permit(:volunteer)
   end
 end

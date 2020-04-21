@@ -50,9 +50,14 @@
             </div>
           </div>
         </div>
-        <div class="w-50 mx-auto">
-
-        </div>
+        <% request.assignments.each do |assignment| %>
+          <div class="w-50 mx-auto">
+            <%= simple_form_for assignment do |f| %>
+              <%= f.association :volunteer, label: assignment.asker.full_name, input_html: {value: request.volunteer} %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     <% end %>
     </div>
