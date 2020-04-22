@@ -1,7 +1,21 @@
 <% request.assignments.each do |assignment| %>
-  <%= link_to "#{assignment.asker.full_name}", user_path(assignment.asker), class: 'text-dark float-left' %>
-  <%= simple_form_for assignment do |f| %>
-    <%= f.input :volunteer_id, as: :hidden, input_html: {value: request.volunteer.id} %>
-    <%= f.submit "Seleccionar", class: "btn btn-sm btn-warning float-right" %>
-  <% end %>
+  <div class="d-flex flex-row justify-content-between align-items-center">
+    <%= link_to '', assignment_path(assignment), method: :delete, data: {confirm:'O candidato será eliminado. Desejas prosseguir?'}, class: 'text-danger text-decoration-none far fa-times-circle mx-2', style: 'font-size: 20px;' %>
+    <% if assignment.asker.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, class: "avatar rounded-circle" %>
+    <% else %>
+      <%= image_tag "https://eu.ui-avatars.com/api/?name=#{assignment.asker.full_name.gsub(" ", "+")}", class: "avatar rounded-circle" %>
+    <% end %>
+    <%= link_to "#{assignment.asker.full_name}", user_path(assignment.asker), class: 'text-dark hoverable text-decoration-none' %>
+    <% unless request.volunteer.assignments.include?(assignment) %>
+      <%= simple_form_for assignment do |f| %>
+        <%= f.input :volunteer_id, as: :hidden, input_html: {value: request.volunteer.id} %>
+        <%= f.submit "Seleccionar", data: {confirm: "Desejas seleccionar #{assignment.asker.full_name} ?"}, class: "btn btn-sm btn-warning mx-2" %>
+      <% end %>
+    <% else %>
+      <button type="button" class="btn btn-secondary btn-sm mx-2" disabled><span class="fas fa-user-check"></span></button>
+    <% end %>
+  </div>
+  <hr>
 <% end %>
+
