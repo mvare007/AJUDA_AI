@@ -13,7 +13,8 @@ class AssignmentsController < ApplicationController
   def update
     @assignment = Assignment.find(params[:id])
     @assignment.update(assignment_params)
-    if @assignment.save
+    binding.pry
+    if @assignment.update(assignment_params)
       redirect_to user_requests_path, notice: 'Success'
     else
       redirect_to user_requests_path, notice: 'Failed'
@@ -27,6 +28,6 @@ class AssignmentsController < ApplicationController
   private
 
   def assignment_params
-    params.require(:assignment).permit(:volunteer)
+    params.require(:assignment).permit(:volunteer_id)
   end
 end

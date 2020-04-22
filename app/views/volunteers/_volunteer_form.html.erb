@@ -1,0 +1,7 @@
+<% request.assignments.each do |assignment| %>
+  <%= link_to "#{assignment.asker.full_name}", user_path(assignment.asker), class: 'text-dark float-left' %>
+  <%= simple_form_for assignment do |f| %>
+    <%= f.input :volunteer_id, as: :hidden, input_html: {value: request.volunteer.id} %>
+    <%= f.submit "Seleccionar", class: "btn btn-sm btn-warning float-right" %>
+  <% end %>
+<% end %>

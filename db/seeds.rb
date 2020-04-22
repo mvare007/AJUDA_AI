@@ -21,7 +21,7 @@ puts "Creating 10 users & 10 requests"
     city: Faker::Address.city,
     about_me: Faker::Lorem.paragraph
   )
-  puts 'Created 1 user...'
+puts 'Created 1 user...'
 
   request = Request.create!(
     title: Faker::Verb.base,
@@ -35,11 +35,20 @@ puts "Creating 10 users & 10 requests"
     phone_number: Faker::PhoneNumber.cell_phone,
     user: user
   )
+
+  volunteer = Volunteer.create!(request: request)
+  chatroom = Chatroom.create!(request: request, name: "#{request.title}")
 end
+
+puts "Creating 20 assignments"
+
+  20.times do
+    Assignment.create!(request: Request.all.sample, asker: User.all.sample)
+  end
 
 puts "Creating demo user"
 
-  User.create!(
+  demo = User.create!(
     email: 'demo@demo.pt',
     password: 123456,
     first_name: Faker::FunnyName.name,
@@ -50,7 +59,10 @@ puts "Creating demo user"
     city: Faker::Address.city,
     about_me: Faker::Lorem.paragraph
   )
- Request.create!(
+
+puts "Creating demo request"
+
+  demo_request = Request.create!(
     title: 'Ajudar Dona Cremilde a ir às compras',
     description: Faker::Lorem.paragraph(sentence_count: 10),
     category: ["Compras", "Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Animais", "Denúncia", "Outro"].sample,
@@ -60,14 +72,15 @@ puts "Creating demo user"
     zip_code: "1500-281",
     city: Faker::Address.city,
     phone_number: Faker::PhoneNumber.cell_phone,
-    user: User.all.sample
+    user: demo
   )
 
-puts "Creating 20 assignments"
+puts "Creating 5 assignments for demo request"
+  5.times do
+    Assignment.create!(request: demo_request, asker: User.all.sample)
+  end
 
-20.times do
-  Assignment.create!(
-    request: Request.all.sample,
-    asker: User.all.sample
-  )
-end
+  volunteer_demo = Volunteer.create!(request: demo_request)
+  chatroom_demo = Chatroom.create!(request: demo_request, name: "#{demo_request.title}")
+
+
