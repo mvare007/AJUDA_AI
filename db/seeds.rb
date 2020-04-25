@@ -1,11 +1,13 @@
-puts "A apagar a base de dados..."
+puts "Destroying the DB!"
 
 Review.destroy_all
 Assignment.destroy_all
 Request.destroy_all
 User.destroy_all
+Volunteer.destroy_all
 
-puts "A criar 10 users e 10 pedidos"
+
+puts "Creating 10 users & 10 requests"
 
 10.times do
   user = User.create!(
@@ -19,7 +21,7 @@ puts "A criar 10 users e 10 pedidos"
     city: Faker::Address.city,
     about_me: Faker::Lorem.paragraph
   )
-  puts 'Created 1 user...'
+puts 'Created 1 user...'
 
   request = Request.create!(
     title: Faker::Verb.base,
@@ -33,11 +35,20 @@ puts "A criar 10 users e 10 pedidos"
     phone_number: Faker::PhoneNumber.cell_phone,
     user: user
   )
+
+  volunteer = Volunteer.create!(request: request)
+  chatroom = Chatroom.create!(request: request, name: "#{request.title}")
 end
 
-puts "A criar demo user"
+puts "Creating 20 assignments"
 
-  User.create!(
+  20.times do
+    Assignment.create!(request: Request.all.sample, asker: User.all.sample)
+  end
+
+puts "Creating demo user"
+
+  demo = User.create!(
     email: 'demo@demo.pt',
     password: 123456,
     first_name: Faker::FunnyName.name,
@@ -48,7 +59,10 @@ puts "A criar demo user"
     city: Faker::Address.city,
     about_me: Faker::Lorem.paragraph
   )
- Request.create!(
+
+puts "Creating demo request"
+
+  demo_request = Request.create!(
     title: 'Ajudar Dona Cremilde a ir às compras',
     description: Faker::Lorem.paragraph(sentence_count: 10),
     category: ["Compras", "Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Animais", "Denúncia", "Outro"].sample,
@@ -58,5 +72,15 @@ puts "A criar demo user"
     zip_code: "1500-281",
     city: Faker::Address.city,
     phone_number: Faker::PhoneNumber.cell_phone,
-    user: User.all.sample
+    user: demo
   )
+
+puts "Creating 5 assignments for demo request"
+  5.times do
+    Assignment.create!(request: demo_request, asker: User.all.sample)
+  end
+
+  volunteer_demo = Volunteer.create!(request: demo_request)
+  chatroom_demo = Chatroom.create!(request: demo_request, name: "#{demo_request.title}")
+
+

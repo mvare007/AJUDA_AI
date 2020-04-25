@@ -1,9 +1,9 @@
 class Request < ApplicationRecord
   belongs_to :user
-  has_one :volunteer
   has_one :review
   has_one :chatroom, dependent: :destroy
   has_many :assignments, dependent: :destroy
+  has_one :volunteer, dependent: :destroy
   has_many_attached :photos
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
@@ -16,12 +16,9 @@ class Request < ApplicationRecord
   validates :zip_code, presence: true, format: { with: /\d{4}\-\d{3}/}
   validates :city, presence: true
 
-  def completo
+  def complete?
     self.completed ? "Sim" : "Não"
   end
 
-  def volunteer
-    User.find(self.volunteer_id)
-  end
 end
 

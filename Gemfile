@@ -19,6 +19,7 @@ gem 'geocoder'
 gem 'acts_as_favoritor'
 gem 'cloudinary', '~> 1.12.0'
 gem 'gemoji'
+gem 'turbolinks', '~> 5.2.0'
 
 group :development do
   gem 'faker'

@@ -1,4 +1,5 @@
 class AssignmentsController < ApplicationController
+  before_action :set_assignment, only: [:update, :destroy]
 
   def create
     @request = Request.find(params[:request])
@@ -10,7 +11,23 @@ class AssignmentsController < ApplicationController
     end
   end
 
-  def destroy
+  def update
+    @assignment.update(assignment_params)
+    redirect_to user_requests_path if @assignment.update(assignment_params)
+  end
 
+  def destroy
+    @assignment.destroy
+    redirect_to user_requests_path
+  end
+
+  private
+
+  def set_assignment
+    @assignment = Assignment.find(params[:id])
+  end
+
+  def assignment_params
+    params.require(:assignment).permit(:volunteer_id)
   end
 end

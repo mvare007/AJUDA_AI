@@ -31,36 +31,29 @@
       <div class="card-block text-center">
         <h4 class="card-title nounderline"><strong><%= request.title %></strong></h4>
         <p class="card-text nounderline mb-4"><%= request.description %></p>
-        <% if request.volunteer_id %>
-        <p>Voluntário: <%= request.volunteer.full_name %></p>
-        <% end %>
-        <%= link_to 'Eliminar', request_path(request), method: :delete, data: {confirm:'Confirmar eliminação?'}, class: 'btn-vol' %>
+        <div class="d-flex justify-content-center">
+          <%= link_to 'Eliminar', request_path(request), method: :delete, data: {confirm:'Confirmar eliminação?'}, remote: true, class: 'btn-vol' %>
 
-        <button type="button" class="btn-vol" data-toggle="modal" data-target="#editModal-<%= request.id %>">Editar</button>
-        <!-- Modal -->
-        <div class="modal fade bd-example-modal-lg" id="editModal-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title text-white" id="exampleModalLabel"><%= request.title %></h4>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <%= render 'shared/request_form', request: request %>
+          <!-- Modal -->
+          <button type="button" class="btn-vol" data-toggle="modal" data-target="#editModal-<%= request.id %>">Editar</button>
+          <div class="modal fade bd-example-modal-lg" id="editModal-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title text-white" id="exampleModalLabel"><%= request.title %></h4>
+                  <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= render 'shared/request_form', request: request %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="w-50 mx-auto">
-          <% unless request.assignments.empty?  %>
-            <%= simple_form_for request do |f| %>
-            <%= f.input :volunteer_id, label: false, prompt: "#{"Voluntário".pluralize(request.assignments.count)} #{request.assignments.count}", collection: request.assignments.map{|assignment| assignment.asker.id}, label_method: lambda { |id| User.find(id).full_name} %>
-            <%= f.input :completed, as: :hidden, input_html: {value: true}  %>
-            <%= f.submit 'Seleccionar', class: 'btn btn-block btn-warning' %>
-            <% end %>
-          <% end %>
+          <div>
+            <%= render 'volunteers/volunteer_form', request: request %>
+          </div>
         </div>
       </div>
     <% end %>

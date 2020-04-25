@@ -1,8 +1,8 @@
-<%= link_to user do %>
-<div class="card" style='background: #351E49;'>
+<%= link_to user, class: "text-decoration-none hoverable" do %>
+<div class="card border border border-light" style='background: #351E49;'>
   <div class="card-body text-center">
     <img class="avatar-xl rounded-circle my-2" src="https://eu.ui-avatars.com/api/?name=<%= user.full_name.gsub(" ", "+") %>}" alt="Bologna">
-    <h4 class="card-title hoverable"><%= user.full_name %></h4>
+    <h4 class="card-title text-light hoverable"><%= user.full_name %></h4>
     <h6 class="card-subtitle my-3 text-muted hoverable"><%= user.city %></h6>
   </div>
 </div>
