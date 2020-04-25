@@ -1,21 +1,45 @@
-<% request.assignments.each do |assignment| %>
-  <div class="d-flex flex-row justify-content-between align-items-center">
-    <%= link_to '', assignment_path(assignment), method: :delete, data: {confirm:'O candidato será eliminado. Desejas prosseguir?'}, class: 'text-danger text-decoration-none far fa-times-circle mx-2', style: 'font-size: 20px;' %>
-    <% if assignment.asker.photo.attached? %>
-      <%= cl_image_tag current_user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, class: "avatar rounded-circle" %>
-    <% else %>
-      <%= image_tag "https://eu.ui-avatars.com/api/?name=#{assignment.asker.full_name.gsub(" ", "+")}", class: "avatar rounded-circle" %>
-    <% end %>
-    <%= link_to "#{assignment.asker.full_name}", user_path(assignment.asker), class: 'text-dark hoverable text-decoration-none' %>
-    <% unless request.volunteer.assignments.include?(assignment) %>
-      <%= simple_form_for assignment do |f| %>
-        <%= f.input :volunteer_id, as: :hidden, input_html: {value: request.volunteer.id} %>
-        <%= f.submit "Seleccionar", data: {confirm: "Desejas seleccionar #{assignment.asker.full_name} ?"}, class: "btn btn-sm btn-warning mx-2" %>
-      <% end %>
-    <% else %>
-      <button type="button" class="btn btn-secondary btn-sm mx-2" disabled><span class="fas fa-user-check"></span></button>
-    <% end %>
-  </div>
-  <hr>
-<% end %>
+<% unless request.assignments.empty? %>
 
+  <button type="button" class="btn-vol" data-toggle="modal" data-target="#volModal-<%= request.id %>"><%= request.assignments.count %> <%= "Candidato".pluralize(request.assignments.count) %></button>
+  <div class="modal fade bd-example-modal-lg" id="volModal-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title text-white" id="exampleModalLabel"><i class="fas fa-user-plus"></i>  Selecciona o candidato pretendido</h4>
+          <button type="button" class="close text-white"  aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body bg-white">
+          <% request.assignments.each do |assignment| %>
+            <div class="d-flex flex-row justify-content-between align-items-center">
+              <%= link_to '', assignment_path(assignment), method: :delete, data: {confirm:'O candidato será eliminado. Desejas prosseguir?'}, class: 'text-danger text-decoration-none far fa-times-circle mx-2', style: 'font-size: 20px;' %>
+              <% if assignment.asker.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, class: "position-absolute avatar-xl rounded-circle" %>
+              <% else %>
+                <%= image_tag "https://eu.ui-avatars.com/api/?name=#{assignment.asker.full_name.gsub(" ", "+")}", class: "position-absolute avatar-xl rounded-circle" %>
+              <% end %>
+              <%= link_to "#{assignment.asker.first_name}", user_path(assignment.asker), class: 'text-dark hoverable text-decoration-none', style: "font-size: 20px;" %>
+              <% unless request.volunteer.assignments.include?(assignment) %>
+                <%= simple_form_for assignment, remote: true do |f| %>
+                  <%= f.input :volunteer_id, as: :hidden, input_html: {value: request.volunteer.id} %>
+                  <%= button_tag type: 'submit', class: "button postfix btn btn-sm btn-light mx-2", id: 'volunteerSubmit', data: {confirm: "Desejas seleccionar #{assignment.asker.full_name} ?"} do %>
+                    <i class="fas fa-user-plus" style="font-size: 22px;"></i>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <%= simple_form_for assignment, remote: true do |f| %>
+                  <%= f.input :volunteer_id, as: :hidden, input_html: {value: nil } %>
+                  <%= button_tag type: 'submit', class: "button postfix btn btn-sm btn-success mx-2", id: 'volunteerSubmit', data: {confirm: "Desejas retirar #{assignment.asker.full_name} ?"} do %>
+                    <i class="fas fa-user-check" style="font-size: 22px;"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+            <hr>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
