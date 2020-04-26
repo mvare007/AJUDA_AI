@@ -1,12 +1,12 @@
 <% unless request.assignments.empty? %>
 
-  <button type="button" class="btn-vol" data-toggle="modal" data-target="#volModal-<%= request.id %>"><%= request.assignments.count %> <%= "Candidato".pluralize(request.assignments.count) %></button>
+  <button type="button" class="btn-vol" data-toggle="modal" data-target="#volModal-<%= request.id %>">Seleccionar <i class="fas fa-user-alt"> (<%= request.assignments.count %>)</i></button>
   <div class="modal fade bd-example-modal-lg" id="volModal-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title text-white" id="exampleModalLabel"><i class="fas fa-user-plus"></i>  Selecciona o candidato pretendido</h4>
-          <button type="button" class="close text-white"  aria-label="Close">
+          <h4 class="modal-title text-white" id="exampleModalLabel"><i class="fas fa-user-plus"></i>  Selecciona o(s) candidato(s) pretendido(s)</h4>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
