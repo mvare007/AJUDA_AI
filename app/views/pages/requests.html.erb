@@ -5,7 +5,7 @@
     <div class="text-center m-5">
       <button type="button" class="btn-vol" data-toggle="modal" data-target="#createModal">Cria o teu primeiro Pedido</button>
     </div>
-    <!-- Modal -->
+    <!-- Modal To Create The First Request-->
     <div class="modal fade bd-example-modal-lg" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -23,41 +23,61 @@
     </div>
   </div>
 <% else %>
-  <div class="cards my-3">
+  <div class="cards-user-request m-3">
     <% @requests.each do |request| %>
     <div class="card" >
       <%= link_to request_path(request), class: 'nounderline' do %>
+      <div class="text-center">
+        <h4 class="card-title m-3"><strong><%= request.title %></strong></h4>
+      </div>
+        <p class="card-text text-muted text-center">Activo desde: <%= request.created_at.strftime('%d-%m-%Y %H:%M') %></p>
       <%= image_tag "https://source.unsplash.com/random", class: "card-img-top"  %>
-      <div class="card-block text-center">
-        <h4 class="card-title nounderline"><strong><%= request.title %></strong></h4>
-        <p class="card-text nounderline mb-4"><%= request.description %></p>
-        <div class="d-flex justify-content-center">
-          <%= link_to 'Eliminar', request_path(request), method: :delete, data: {confirm:'Confirmar eliminação?'}, remote: true, class: 'btn-vol' %>
+      <div class="card-block text-center d-flex">
+        <div class="col-4">
+          <div class="d-flex flex-row justify-content-center align-items-end m-3">
+            <%= link_to '', request_path(request), method: :delete, data: {confirm:'Confirmar eliminação?'}, remote: true, class: 'btn-vol fas fa-trash', style: "font-size: 24px;" %>
 
-          <!-- Modal -->
-          <button type="button" class="btn-vol" data-toggle="modal" data-target="#editModal-<%= request.id %>">Editar</button>
-          <div class="modal fade bd-example-modal-lg" id="editModal-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title text-white" id="exampleModalLabel"><%= request.title %></h4>
-                  <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <%= render 'shared/request_form', request: request %>
+            <!-- Modal To Edit The Request-->
+            <button type="button" class="btn-vol" data-toggle="modal" data-target="#editModal-<%= request.id %>"><i class="fas fa-edit"></i></button>
+            <div class="modal fade bd-example-modal-lg" id="editModal-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title text-white" id="exampleModalLabel"><%= request.title %></h4>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <%= render 'shared/request_form', request: request %>
+                  </div>
                 </div>
               </div>
             </div>
+            <div>
+              <% if request.completed == false && !request.volunteer.assignments.blank? %>
+                <%= simple_form_for request, remote: true do |f| %>
+                  <%= f.input :completed, as: :hidden, input_html: {value: true} %>
+                  <%= button_tag type: 'submit', class: "btn-vol", data: {confirm: "Pretendes marcar este pedido como concluído?"} do %>
+                    <i class="fas fa-check"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
           </div>
-          <div>
+          <div class="d-flex justify-content-center m-2">
             <%= render 'volunteers/volunteer_form', request: request %>
           </div>
+        </div>
+        <div class="col-8 mt-4">
+
         </div>
       </div>
     <% end %>
     </div>
   <% end %>
   </div>
+  <% if request. %>
+
+  <% end %>
 <% end %>
