@@ -5,19 +5,16 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.assignment
-    @review.user = current_user
     if @review.save
-      redirect_to new_review_path
+      redirect_to user_requests_path
     else
-      flash[:alert] = "Oops! Houve um erro, volta a tentar."
-      render :new
+      redirect_to user_requests_path, notice: "Oops! Houve um erro, volta a tentar."
     end
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating)
+    params.require(:review).permit(:content, :rating, :request_id, :user_id)
   end
 end

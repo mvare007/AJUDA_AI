@@ -1,0 +1,37 @@
+<button type="button" class="btn-vol" data-toggle="modal" data-target="#reviewModal-<%= request.id %>"><i class="far fa-thumbs-up"></i></button>
+<div class="modal fade bd-example-modal-lg" id="reviewModal-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-white" id="exampleModalLabel"><%= request.title %></h4>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-light">
+        <% request.volunteer.assignments.each do |assignment| %>
+          <div class="mb-5">
+            <% if assignment.asker.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, class: "rounded-circle mb-3" %>
+            <% else %>
+              <%= image_tag "https://eu.ui-avatars.com/api/?name=#{assignment.asker.full_name.gsub(" ", "+")}", class: "rounded-circle mb-3" %>
+            <% end %>
+            <%= simple_form_for @review do |f| %>
+              <%= f.input :user_id, as: :hidden, input_html: {value: assignment.asker.id} %>
+              <%= f.input :request_id, as: :hidden, input_html: {value: request.id} %>
+              <h4><%= assignment.asker.full_name %></h4>
+              <%= f.input :rating, collection: (1..5).to_a, label: "Avalia a experiência:" %>
+              <%= f.input :content, label: false, placeholder: 'Descreve a experiência'  %>
+              <%= f.submit "Submeter", class: 'btn-nav mx-auto m-3' %>
+              <hr>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
