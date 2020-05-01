@@ -22,3 +22,20 @@ initStarRating();
 import { emojiPicker } from '../emoji/emoji';
 emojiPicker();
 
+
+const submitForms = () => {
+  const forms = document.querySelectorAll("#new_review");
+  const button = document.querySelector('#submitReviews');
+  if (button) {
+    button.addEventListener('click', (event) => {
+      forms.forEach((form) => {
+        form.submit();
+      });
+    });
+  };
+};
+
+submitForms()
+
+
+

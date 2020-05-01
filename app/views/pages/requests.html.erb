@@ -55,13 +55,16 @@
               </div>
             </div>
             <div>
-              <% if request.completed == false && !request.volunteer.assignments.blank? %>
+              <% if !request.completed && !request.volunteer.assignments.blank? %>
                 <%= simple_form_for request, remote: true do |f| %>
                   <%= f.input :completed, as: :hidden, input_html: {value: true} %>
                   <%= button_tag type: 'submit', class: "btn-vol", data: {confirm: "Pretendes marcar este pedido como concluído?"} do %>
                     <i class="fas fa-check"></i>
                   <% end %>
                 <% end %>
+              <% end %>
+              <% if request.completed %>
+                <%= render 'reviews/new', request: request %>
               <% end %>
             </div>
           </div>
@@ -70,14 +73,11 @@
           </div>
         </div>
         <div class="col-8 mt-4">
-
+          <!-- TODO -->
         </div>
       </div>
     <% end %>
     </div>
   <% end %>
   </div>
-  <% if request. %>
-
-  <% end %>
 <% end %>

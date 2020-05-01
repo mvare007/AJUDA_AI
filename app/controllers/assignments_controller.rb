@@ -5,7 +5,7 @@ class AssignmentsController < ApplicationController
     @request = Request.find(params[:request])
     @assignment = Assignment.new(asker: current_user, request: @request)
     if @assignment.save
-      redirect_to request_path(@request), notice: 'Foi enviado o pedido'
+      redirect_to request_path(@request), notice: 'Enviado com sucesso'
     else
       redirect_to request_path(@request), notice: 'Algo correu mal, tenta outra vez'
     end
@@ -13,7 +13,7 @@ class AssignmentsController < ApplicationController
 
   def update
     @assignment.update(assignment_params)
-    redirect_to user_requests_path if @assignment.update(assignment_params)
+    redirect_to user_requests_path, anchor: @assignment
   end
 
   def destroy

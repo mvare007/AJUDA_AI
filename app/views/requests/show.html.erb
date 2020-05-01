@@ -3,8 +3,12 @@
     <div class="col-sm-12 col-md-8 col-lg-8">
       <%= render 'requests/photos_carousel' %>
       <h1><strong><%= @request.title %></strong></h1>
-      <%= link_to request_favorite_path(@request) do %>
-        <i class="far fa-star"></i>
+      <%= link_to request_favorite_path(@request), class: "hoverable text-warning" do %>
+        <% if @request.favorited_by?(current_user) %>
+          <i class="fas fa-star"></i>
+        <% else %>
+          <i class="far fa-star"></i>
+        <% end %>
       <% end %>
       <h5><%= @request.description %></h5>
     </div>
@@ -16,7 +20,9 @@
   </div>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-6">
-      <%= render 'chatrooms/show' %>
+      <% if @request.user == current_user || @request.volunteer.assignments.where(asker: current_user).present? %>
+        <%= render 'chatrooms/show' %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="container-sm">
-  <%= simple_form_for request do |f| %>
+  <%= simple_form_for request, remote: true do |f| %>
     <%= f.input :category, label: false, prompt: 'Categoria', placeholder: 'Categoria', collection: ["Compras", "Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Animais", "Denúncia", "Outro"], error: 'Por favor selecciona uma Categoria' %>
     <%= f.input :title, label: false, placeholder: 'Título', error: 'Por favor introduz um Título' %>
     <%= f.input :description, label: false, placeholder: 'Descrição', error: 'Por favor introduz a Descrição' %>
