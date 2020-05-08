@@ -41,10 +41,10 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:request_id])
     if !current_user.favorited?(@request)
       current_user.favorite(@request)
-      redirect_to @request, notice: "O pedido '#{@request.title}' foi adicionado aos teus favoritos"
+      redirect_to @request, notice: "O pedido '#{@request.title}' foi guardado na tua lista"
     else
       current_user.unfavorite(@request)
-      redirect_to @request, notice: "O pedido '#{@request.title}' foi removido dos teus favoritos"
+      redirect_to @request, notice: "O pedido '#{@request.title}' foi removido da tua lista"
     end
   end
 
