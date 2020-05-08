@@ -22,7 +22,9 @@
   </div>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-6">
-      <%= render 'chatrooms/show' %>
+      <% if @request.user == current_user || @request.volunteer.assignments.where(asker: current_user).present? %>
+        <%= render 'chatrooms/show' %>
+      <% end %>
     </div>
   </div>
 </div>
