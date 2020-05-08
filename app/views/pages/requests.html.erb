@@ -35,7 +35,7 @@
       <div class="card-block text-center d-flex">
         <div class="col-4">
           <div class="d-flex flex-row justify-content-center align-items-end m-3">
-            <%= link_to '', request_path(request), method: :delete, data: {confirm:'Confirmar eliminação?'}, remote: true, class: 'btn-vol fas fa-trash', style: "font-size: 24px;" %>
+            <%= link_to '', request_path(request), remote: true, method: :delete, data: {confirm:'Confirmar eliminação?'}, class: 'btn-vol fas fa-trash', style: "font-size: 24px;" %>
 
             <!-- Modal To Edit The Request-->
             <button type="button" class="btn-vol" data-toggle="modal" data-target="#editModal-<%= request.id %>"><i class="fas fa-edit"></i></button>

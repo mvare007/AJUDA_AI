@@ -2,14 +2,16 @@
   <div class="row mt-5">
     <div class="col-sm-12 col-md-8 col-lg-8">
       <%= render 'requests/photos_carousel' %>
-      <h1><strong><%= @request.title %></strong></h1>
-      <%= link_to request_favorite_path(@request), class: "hoverable text-warning" do %>
-        <% if @request.favorited_by?(current_user) %>
-          <i class="fas fa-star"></i>
-        <% else %>
-          <i class="far fa-star"></i>
+      <div class="d-inline-flex justify-content-between" id="bookmark">
+        <h1 class="mr-3"><strong><%= @request.title %></strong></h1>
+        <%= link_to request_favorite_path(@request) do %>
+          <% if @request.favorited_by?(current_user) %>
+            <i class="fas fa-bookmark text-light" style="font-size: 18px;"></i>
+          <% else %>
+            <i class="far fa-bookmark text-white" style="font-size: 18px;"></i>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
       <h5><%= @request.description %></h5>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-4">

@@ -7,7 +7,11 @@
       <% end %>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-6">
-      <!-- content -->
+      <% unless @user.reviews.blank? %>
+        <%= @user.reviews.each do |review| %>
+          review.content
+        <% end %>
+      <% end %>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-6">
       <!-- content -->
