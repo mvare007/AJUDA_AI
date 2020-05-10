@@ -9,7 +9,8 @@
     <%= f.input :zip_code, label: false, placeholder: 'Código Postal', error: "Por favor introduz um Código Postal válido (0000-000)" %>
     <%= f.input :city, label: false, placeholder: 'Cidade', error: 'Por favor introduz a Cidade' %>
     <%= f.input :phone_number, label: false, placeholder: 'Contacto Telefónico', input_html: { maxlength: 9 } %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false  %>
-    <%= f.submit 'Criar', class: 'btn btn-block btn-vol float-right' %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'd-none', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: 'Adiciona fotos 📷 '  %>
+    <%= image_tag "", width: 200, class: "hidden mx-auto", id: "photo-preview" %>
+    <%= f.submit 'Criar', class: 'btn btn-block btn-vol' %>
   <% end %>
 </div>

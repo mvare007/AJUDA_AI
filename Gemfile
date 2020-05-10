@@ -24,6 +24,7 @@ gem 'turbolinks', '~> 5.2.0'
 group :development do
   gem 'faker'
   gem 'web-console', '>= 3.3.0'
+  gem 'bullet'
 end
 
 group :development, :test do
