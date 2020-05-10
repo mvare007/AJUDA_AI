@@ -1,0 +1,32 @@
+.card-review {
+  overflow: hidden;
+  height: 120px;
+  background: #F0E9E9;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.card-review img {
+  height: 60%;
+  width: 80px;
+  object-fit: cover;
+}
+
+.card-review h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-review p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-review .card-review-infos {
+  padding: 16px;
+}
