@@ -1,4 +1,4 @@
-<div class="card" style='background: yellow;'>
+<div class="card mt-5" style='background: yellow;'>
   <div class="card-body text-center">
     <% if user.photo.attached? %>
       <%= cl_image_tag user.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face, class: 'avatar-xl rounded-circle hoverable my-2' %>

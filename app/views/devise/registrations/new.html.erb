@@ -1,33 +1,70 @@
-<h2>Registo</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4 mx-auto">
+      <div class="form-login">
+        <h2>Registo</h2>
+        <hr style="border: none; height:1px; color:#333; background-color:#333;">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" }, label: 'Confirmação de Password' %>
-    <%= f.input :first_name, require: true, placeholder: 'Nome', label: false %>
-    <%= f.input :last_name, require: true, placeholder: 'Apelido', label: false %>
-    <%= f.input :birth_date, require: true, label: 'Data de Nascimento'%>
-    <%= f.input :address, require: true, placeholder: 'Morada', label: false %>
-    <%= f.input :zip_code, require: true, placeholder: 'Código Postal', label: false %>
-    <%= f.input :city, require: true, placeholder: 'Cidade', label: false %>
-    <%= f.input :about_me, require: true, placeholder: 'Sobre mim:', label: false %>
-    <%= f.input :photo %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        label: "E-mail",
+                        input_html: { autocomplete: "email" }%>
+            <div class="form-row">
+              <div class="col-md-6">
+                <%= f.input :password,
+                            required: true,
+                            hint: ("Minímo de #{@minimum_password_length} caracteres" if @minimum_password_length),
+                            input_html: { autocomplete: "new-password" },
+                            label: "Palavra-passe",
+                            placeholder: "••••••" %>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :password_confirmation,
+                            required: true,
+                            input_html: { autocomplete: "new-password" },
+                            label: "Confirma a Palavra-passe",
+                            placeholder: "••••••" %>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6">
+                <%= f.input :first_name, require: true, placeholder: 'Nome', label: false %>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :last_name, require: true, placeholder: 'Apelido', label: false %>
+              </div>
+            </div>
+            <%= f.input :birth_date, require: true, label: 'Data de Nascimento', html5: true %>
+            <%= f.input :address, require: true, placeholder: 'Morada', label: false %>
+            <div class="form-row justify-content-between">
+              <div class="col-md-6">
+                <%= f.input :zip_code, require: true, placeholder: 'Código Postal', label: false %>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :city, require: true, placeholder: 'Cidade', label: false %>
+              </div>
+            </div>
+            <%= f.input :about_me, require: true, placeholder: 'Sobre mim', label: false %>
+            <%= f.input :photo, as: :file, input_html: { class: 'd-none', id: 'photo-input' }, label_html: { class: 'upload-photo btn btn-block btn-light'}, label: 'Foto de Perfil 📷 '  %>
+            <div class="text-center">
+              <%= image_tag "", width: 100, class: "hidden m-3 img-thumbnail", id: "photo-preview" %>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Confirmar", class: "btn-vol" %>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
