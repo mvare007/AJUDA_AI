@@ -1,4 +1,4 @@
-<div class="card" style='background: yellow;'>
+<div class="card mt-5" style='background: yellow;'>
   <div class="card-body text-center">
     <% if user.photo.attached? %>
       <%= cl_image_tag user.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face, class: 'avatar-xl rounded-circle hoverable my-2' %>
@@ -6,13 +6,22 @@
       <img class="avatar-xl rounded-circle my-2" src="https://eu.ui-avatars.com/api/?name=<%= user.full_name.gsub(" ", "+") %>}" alt="Bologna">
     <% end %>
     <h2 class="card-title"><%= user.full_name %></h2>
-    <h4 class="card-subtitle mb-5 text-muted"><%= user.city %></h4>
-    <div class="container"><h5 class="card-text my-5"><%= user.about_me %></h5></div>
-    <p class="br-wrapper br-theme-css-stars">Mean Reviews(TODO)</p>
+    <h5 class="card-subtitle mb-5 text-muted"><%= user.city %></h5>
+    <h5 class="card-text my-5"><%= user.about_me %></h5>
+    <% unless user.reviews.blank? %>
+      <div class="mean_review">
+        <h5>Avaliação Média</h5>
+        <% mean_review(user.reviews).to_i.times do %>
+          <span style="font-size: 22px;" class="fa fa-star checked text-warning"></span>
+        <% end %>
+        <p><strong><%= mean_review(user.reviews).round(2) %></strong></p>
+        <p>Com base em <%= user.reviews.count %> <%= "critícas".pluralize(user.reviews.count) %></p>
+      </div>
+    <% end %>
     <% if current_user.favorited?(user, scope: :follow) %>
-      <%= link_to 'A seguir', user_follow_path(user), class: "btn btn-warning"  %>
+      <%= link_to 'A seguir', user_follow_path(user), class: "btn btn-warning mt-3"  %>
     <% elsif user != current_user %>
-      <%= link_to 'Seguir', user_follow_path(user), class: "btn btn-info" %>
+      <%= link_to 'Seguir', user_follow_path(user), class: "btn btn-info mt-3" %>
     <% end %>
     <hr style="border: 1px solid #341D48;">
     <div class="row">

@@ -16,16 +16,17 @@
 @import "requests/index";
 @import "requests/show";
 @import "chatrooms/show";
-
+@import "reviews/show";
+@import "devise/login-form";
 
 body {
-  background: -webkit-linear-gradient(to right, #2F0743, #41295a);
-  background: linear-gradient(to right, #2F0743, #41295a);
+  background-color: #a4508b;
+  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
 }
 
 .hoverable:hover {
   opacity: 0.9;
-  color: lightyellow;
+  color: yellow;
   cursor: pointer;
   text-decoration: none;
 }
@@ -55,3 +56,11 @@ text-decoration: none;
 }
 
 
+.upload-photo {
+  border: 1px solid #d3d3d3;
+  padding: 16px 24px;
+  cursor: pointer;
+  font-weight: 500;
+  background: white;
+  border-radius: 2px;
+}

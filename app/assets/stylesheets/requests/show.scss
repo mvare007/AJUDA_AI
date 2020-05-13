@@ -207,15 +207,6 @@
   -moz-box-sizing: border-box;
 }
 
-body {
-  background: #fcfcfc;
-  margin: 0;
-}
 
-.container {
-  width: 900px;
-  min-width: 900px;
-  margin: 50px auto;
-}
 
 @include carousel(5);

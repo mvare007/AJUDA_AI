@@ -1,16 +1,14 @@
-<div class="container-fluid">
+<div class="container">
   <%= render 'shared/user_show_card', user: @user %>
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-6">
+    <div class="col-sm-12 col-md-8 col-lg-6 mt-3">
       <% if @user == current_user %>
         <%= render 'shared/bookmarked' %>
       <% end %>
     </div>
-    <div class="col-sm-12 col-md-8 col-lg-6">
+    <div class="col-sm-12 col-md-8 col-lg-6 mt-3">
       <% unless @user.reviews.blank? %>
-        <%= @user.reviews.each do |review| %>
-          review.content
-        <% end %>
+        <%= render "reviews/show" %>
       <% end %>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-6">
