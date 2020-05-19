@@ -1,9 +1,24 @@
-<h1 id="userRequests"><%= @user.requests.count %></h1>
-<span id="settingsUserRequests">Pedidos</span>
-<div id="panelUserRequests">
-  <ul>
-    <% @user.requests.each do |request| %>
-      <%= render 'shared/request_card', request: request %>
-    <% end %>
-  </ul>
+<div class="hoverable" data-toggle="modal" data-target="#userRequestsModalLong">
+  <h1 id="userRequests"><%= @user.requests.count %></h1>
+  <span id="settingsUserRequests">Pedidos</span>
 </div>
+
+<% unless @user.requests.blank? %>
+  <div class="modal fade" id="userRequestsModalLong" tabindex="-1" role="dialog" aria-labelledby="userRequestsModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title text-white" id="userRequestsModalLongTitle">Pedidos de <%= @user.first_name %></h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <% @user.requests.each do |request| %>
+            <%= render 'shared/request_card', request: request %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

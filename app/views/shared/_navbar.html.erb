@@ -6,29 +6,31 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Pedidos", requests_path, class: "btn-nav nav-link " %>
+          <%= render "shared/new_request_modal" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Mensagens", chatrooms_path, class: "btn-nav nav-link " %>
+          <%= link_to "Pedidos", requests_path, class: "btn-nav nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Meu Perfil", user_path(current_user), class: "btn-nav nav-link " %>
+          <%= link_to "Meus Pedidos", user_requests_path, class: "btn-nav nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "#{current_user.first_name}", user_path(current_user), class: "btn-nav nav-link " %>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, width: 100, height: 100, crop: :thumb, gravity: :face, class: "avatar rounded-circle dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= cl_image_tag current_user.photo.key, width: 100, height: 100, crop: :thumb, gravity: :face, class: "avatar rounded-circle hoverable dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else %>
-            <%= image_tag "https://eu.ui-avatars.com/api/?name=#{current_user.full_name.gsub(" ", "+")}", class: "avatar rounded-circle dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= image_tag "https://eu.ui-avatars.com/api/?name=#{current_user.full_name.gsub(" ", "+")}", class: "avatar rounded-circle hoverable dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu dropdown-menu-right swing-in-top-fwd" aria-labelledby="navbarDropdown">
             <%= link_to "Definições", "#", class: "dropdown-item" %>
             <%= link_to "Meus pedidos", user_requests_path, class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>

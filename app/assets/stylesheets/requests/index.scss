@@ -1,7 +1,7 @@
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 30px;
 }
 
 // Smallest device
@@ -35,13 +35,14 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
 .nounderline {
   text-decoration: none;
-  color: gray;
+  color: #26272D;
+  cursor: pointer;
 }
 
 .nounderline:hover {
@@ -51,11 +52,22 @@
 }
 
 .card {
-  background-color: yellow;
+  background-color: #f6b93b;
 }
 
 .card-img-top {
-  height: 350px;
-  background-size: contain, cover !important;
+  width: 70%;
+  background-size: contain;
+  display: block;
+  margin: 0 auto;
+  -webkit-transform: scale(1);
+  transform: scale(0.9);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  overflow: hidden;
 }
 
+.card-img-top:hover {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
