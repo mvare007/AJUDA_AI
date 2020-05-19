@@ -1,28 +1,34 @@
 .banner {
-  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), asset-url('matt-collamer.jpg');
+  background-image: linear-gradient(rgb(113, 66, 144),rgba(0,0,0,0.5)), asset-url('help_1280.png');
   background-size: cover;
-  background-position: center;
-  padding: 150px 0;
-  height: 100vh;
-  border: 10px 10px 10px 10px;
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+  min-width: 98vw;
+  min-height: 93vh;
 }
 
 .banner h1 {
-  margin: 0;
+  margin-left: 50px;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 50px;
+  font-size: 45px;
   font-weight: bold;
-  position: relative;
-  bottom: 70px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 
 .btn-flat {
   font-size: 26px;
-  background-color: #3E2657;
-  color: white;
+  background-color: #f6b93b;
+  color: black;
   padding: 20px 45px;
-  position: relative;
-  top: 350px;
 }
+
+.btn-flat:hover {
+  cursor: pointer !important;
+  opacity: 0.9;
+}
+
+

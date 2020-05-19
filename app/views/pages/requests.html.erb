@@ -1,5 +1,5 @@
 <% if @requests.empty? %>
-  <div class="container-fluid">
+  <div class="container-wide">
     <h1 class="text-center text-white" style=" padding-top: 80px; margin-top: 180px; font-size: 100px;">Vazio</h1>
     <h2 class="text-center text-muted">Aqui poderás ver os teus pedidos</h2>
     <div class="text-center m-5">
@@ -23,6 +23,7 @@
     </div>
   </div>
 <% else %>
+<div class="container">
   <div class="cards-user-request m-3">
     <% @requests.each do |request| %>
     <div class="card" >
@@ -43,7 +44,7 @@
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title text-white" id="exampleModalLabel"><%= request.title %></h4>
+                    <h4 class="modal-title text-white" id="editModalLabel"><%= request.title %></h4>
                     <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -81,3 +82,4 @@
   <% end %>
   </div>
 <% end %>
+</div>

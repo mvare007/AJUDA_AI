@@ -11,13 +11,6 @@ initMapbox();
 import { initStarRating } from '../plugins/init_star_rating';
 initStarRating();
 
-
-// Request show page image carousel
- $('#myCarousel').carousel({
-    interval: 2500,
- });
-
-
 // Emoji Picker
 import { emojiPicker } from '../emoji/emoji';
 emojiPicker();

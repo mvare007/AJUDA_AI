@@ -1,0 +1,23 @@
+<div class="form-login-home">
+
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: false,
+                  input_html: { autocomplete: "email" },
+                  label: "E-mail",
+                  placeholder: "exemplo@email.com" %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" },
+                  label: "Palavra-passe",
+                  placeholder: "••••••" %>
+      <%= f.input :remember_me, as: :boolean, label: "Lembrar-me" if devise_mapping.rememberable? %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Iniciar Sessão", class: "btn btn-vol" %>
+    </div>
+  <% end %>
+  <%= link_to "Esqueci-me da palavra-passe", new_password_path(resource_name), class: "text-light" %><br />
+</div>

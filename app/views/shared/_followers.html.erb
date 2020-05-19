@@ -1,9 +1,24 @@
-<h1 id="follow"><%= @user.favoritors(scope: :follow).count %></h1>
-<span id="settingsFollowers">Seguidores</span>
-<div id="panelFollowers">
-  <ul>
-    <% @user.favoritors(scope: :follow).each do |followers| %>
-      <%= render 'shared/profile_card', user: followers %>
-    <% end %>
-  </ul>
+<div class="hoverable" data-toggle="modal" data-target="#followersModalLong">
+  <h1 id="follow"><%= @user.favoritors(scope: :follow).count %></h1>
+  <span id="settingsFollowers">Seguidores</span>
 </div>
+
+<% unless @user.favoritors.blank? %>
+  <div class="modal fade" id="followersModalLong" tabindex="-1" role="dialog" aria-labelledby="followersModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title text-white" id="followersModalLongTitle">Seguidores</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <% @user.favoritors(scope: :follow).each do |followers| %>
+            <%= render 'shared/profile_card', user: followers %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

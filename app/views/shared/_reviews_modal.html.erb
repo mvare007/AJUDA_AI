@@ -1,0 +1,18 @@
+<div class="mean_review hoverable" data-toggle="modal" data-target="#reviewModalLong">
+  <h5>Avaliação Média</h5>
+  <% mean_review(@user.reviews).to_i.times do %>
+    <span style="font-size: 22px;" class="fa fa-star checked text-warning"></span>
+  <% end %>
+  <p><strong><%= mean_review(@user.reviews).round(2) %></strong></p>
+  <p>Com base em <%= @user.reviews.count %> <%= "critícas".pluralize(@user.reviews.count) %></p>
+</div>
+
+<div class="modal fade" id="reviewModalLong" tabindex="-1" role="dialog" aria-labelledby="reviewModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= render "reviews/show" %>
+      </div>
+    </div>
+  </div>
+</div>
