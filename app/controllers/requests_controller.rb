@@ -22,7 +22,7 @@ class RequestsController < ApplicationController
     @chatroom = Chatroom.new(name: @request.title, request: @request)
     @volunteer = Volunteer.new(request: @request)
     @request.user = current_user
-    if @request.save && @chatroom.save && @volunteer.save
+    if @request.save && @chatroom.save && @volunteer.save || verify_recaptcha(model: @request)
       redirect_to request_path(@request), notice: "Pedido criado com sucesso"
     else
       render :new, notice: "Corrige os erros e tenta novamente"

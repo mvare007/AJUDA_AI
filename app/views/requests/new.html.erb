@@ -72,6 +72,9 @@
           <div class="text-center">
             <%= image_tag "", width: 100, class: "hidden m-3 img-thumbnail", id: "photo-preview" %>
           </div>
+
+          <%= recaptcha_tags %>
+
           <%= f.submit 'Criar', class: 'btn btn-block btn-vol' %>
         <% end %>
 
@@ -79,15 +82,3 @@
     </div>
   </div>
 </div>
-
-
-
-<div class="form-row">
-  <div class="col-md-4">
-
-  </div>
-  <div class="col-md-8">
-
-  </div>
-</div>
-
