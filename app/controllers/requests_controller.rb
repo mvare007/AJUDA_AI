@@ -13,6 +13,10 @@ class RequestsController < ApplicationController
     @chatroom = Chatroom.includes(messages: :user).where(request: @request).first
   end
 
+  def new
+    @request = Request.new
+  end
+
   def create
     @request = Request.new(request_params)
     @chatroom = Chatroom.new(name: @request.title, request: @request)
@@ -21,7 +25,7 @@ class RequestsController < ApplicationController
     if @request.save && @chatroom.save && @volunteer.save
       redirect_to request_path(@request), notice: "Pedido criado com sucesso"
     else
-      redirect_to requests_path
+      render :new, notice: "Corrige os erros e tenta novamente"
     end
   end
 
