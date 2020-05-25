@@ -1,10 +1,13 @@
-<div style="background-color: #f6b93b;">
-  <h5 class="fas fa-bookmark m-1 ml-5"></h5>
+<div class="container mt-3">
   <% if current_user.all_favorited.count == 0 %>
-    <p>Aqui surgirão os pedidos que marcaste com <i class="far fa-star"></i></p>
+    <h1 class="text-center text-header"><i class="far fa-bookmark"></i></h1>
+    <h2 class="text-center text-muted">Aqui surgirão os pedidos que marcaste</h2>
   <% else %>
-    <% current_user.all_favorited.each do |request| %>
-      <%= render 'shared/request_card', request: request %>
-    <% end %>
+    <div class="cards">
+      <% current_user.all_favorited.each do |request| %>
+        <%= render 'shared/request_card', request: request %>
+      <% end %>
+    </div>
   <% end %>
 </div>
+

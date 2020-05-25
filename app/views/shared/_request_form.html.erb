@@ -1,18 +1,80 @@
-<div class="">
-  <%= simple_form_for Request.new, remote: true do |f| %>
-    <%= f.input :category, label: false, prompt: 'Categoria', placeholder: 'Categoria', collection: ["Compras", "Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Animais", "Denúncia", "Outro"], error: 'Por favor selecciona uma Categoria' %>
-    <%= f.input :title, label: false, placeholder: 'Título', error: 'Por favor introduz um Título' %>
-    <%= f.input :description, label: false, placeholder: 'Descrição', error: 'Por favor introduz a Descrição' %>
-    <%= f.input :person_name, label: false, placeholder: 'Nome' %>
-    <%= f.input :age, label: false, prompt: 'Idade', collection: 18..120  %>
-    <%= f.input :address, label: false, placeholder: 'Morada', error: 'Por favor introduz a Morada (não será revelada sem a tua permissão)' %>
-    <%= f.input :zip_code, label: false, placeholder: 'Código Postal', error: "Por favor introduz um Código Postal válido (0000-000)" %>
-    <%= f.input :city, label: false, placeholder: 'Cidade', error: 'Por favor introduz a Cidade' %>
-    <%= f.input :phone_number, label: false, placeholder: 'Contacto Telefónico', input_html: { maxlength: 9 } %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'd-none', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: 'Adiciona fotos 📷 '  %>
-    <div class="text-center">
-      <%= image_tag "", width: 100, class: "hidden m-3 img-thumbnail", id: "photo-preview" %>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-sm-offset-12 mx-auto">
+    <div class="form-request">
+      <h1>Editar Pedido</h1>
+      <hr style="border: none; height:1px; color:#333; background-color:#333;">
+
+      <%= simple_form_for request do |f| %>
+
+        <%= f.error_notification %>
+
+        <div class="form-row">
+          <div class="col-md-8">
+            <%= f.input :title, label: false,
+                        placeholder: 'Título',
+                        error: 'Por favor introduz um Título' %>
+          </div>
+          <div class="col-md-4">
+            <%= f.input :category,
+                        label: false,
+                        prompt: 'Categoria',
+                        placeholder: 'Categoria',
+                        collection: ["Compras", "Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Animais", "Denúncia", "Outro"],
+                        error: 'Por favor selecciona uma Categoria' %>
+          </div>
+        </div>
+        <%= f.input :description,
+                    label: false,
+                    placeholder: 'Descrição',
+                    error: 'Por favor introduz a Descrição' %>
+        <div class="form-row">
+          <div class="col-md-9">
+            <%= f.input :person_name,
+                        label: false,
+                        placeholder: 'Nome' %>
+          </div>
+          <div class="col-md-3">
+            <%= f.input :age,
+                        label: false, placeholder: 'Idade', input_html: { min: 18, max: 120 }  %>
+          </div>
+        </div>
+        <%= f.input :address,
+                    label: false,
+                    placeholder: 'Morada',
+                    error: 'Por favor introduz a Morada (não será revelada sem a tua permissão)' %>
+        <div class="form-row">
+          <div class="col-md-3">
+            <%= f.input :zip_code,
+                        label: false,
+                        placeholder: 'Código Postal', error: "Por favor introduz um Código Postal válido (0000-000)",
+                        pattern: "/\d{4}\-\d{3}/" %>
+          </div>
+          <div class="col-md-5">
+            <%= f.input :city,
+                        label: false,
+                        placeholder: 'Cidade',
+                        error: 'Por favor introduz a Cidade' %>
+          </div>
+          <div class="col-md-4">
+          <%= f.input :phone_number,
+                      label: false,
+                      placeholder: 'Telefone',
+                      input_html: { maxlength: 9 } %>
+          </div>
+        </div>
+        <%= f.input :photos,
+                    as: :file,
+                    input_html: { multiple: true,
+                    class: 'd-none', id: 'photo-input' },
+                    label_html: { class: 'upload-photo'},
+                    label: 'Adiciona fotos 📷 '  %>
+        <div class="text-center">
+          <%= image_tag "", width: 100, class: "hidden m-3 img-thumbnail", id: "photo-preview" %>
+        </div>
+
+        <%= f.submit 'Confirmar alteração', class: 'btn btn-block btn-vol' %>
+      <% end %>
+
     </div>
-    <%= f.submit 'Criar', class: 'btn btn-block btn-vol' %>
-  <% end %>
+  </div>
 </div>

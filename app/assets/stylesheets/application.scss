@@ -15,12 +15,14 @@
 @import "pages/request";
 @import "requests/index";
 @import "requests/show";
+@import "requests/new";
 @import "chatrooms/show";
 @import "reviews/show";
 @import "devise/login-form";
 
 body {
   background-image: linear-gradient(326deg, #573d4f 0%, #3a0d4f 74%);
+  min-height: 100vh;
 }
 
 .hoverable:hover {

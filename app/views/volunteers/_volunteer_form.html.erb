@@ -1,11 +1,11 @@
 <% unless request.assignments.empty? %>
 
-  <button type="button" class="btn-vol" data-toggle="modal" data-target="#volModal-<%= request.id %>">Seleccionar<i class="fas fa-user-alt"> (<%= request.assignments.count %>)</i></button>
-  <div class="modal fade bd-example-modal-lg" id="volModal-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <button type="button" class="btn-block btn-vol-sm" data-toggle="modal" data-target="#volModal-<%= request.id %>">Selecciona <i class="fas fa-user-alt"> (<%= request.assignments.count %>)</i></button>
+  <div class="modal fade bd-vol-modal-lg" id="volModal-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
+      <div class="modal-content col-sm-12 col-lg-10">
         <div class="modal-header">
-          <h4 class="modal-title text-white" id="exampleModalLabel"><i class="fas fa-user-plus"></i>  Selecciona o(s) candidato(s) pretendido(s)</h4>
+          <h4 class="modal-title text-white" id="volModalLabel"><i class="fas fa-user-plus"></i>  Selecciona o(s) candidato(s) pretendido(s)</h4>
           <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -15,7 +15,7 @@
             <div class="d-flex flex-row justify-content-between align-items-center">
               <%= link_to '', assignment_path(assignment), method: :delete, data: {confirm:'O candidato será eliminado. Desejas prosseguir?'}, class: 'text-danger text-decoration-none far fa-times-circle mx-2', style: 'font-size: 20px;' %>
               <% if assignment.asker.photo.attached? %>
-                <%= cl_image_tag current_user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, class: "position-absolute avatar-xl rounded-circle" %>
+                <%= cl_image_tag assignment.asker.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, class: "position-absolute avatar-xl rounded-circle" %>
               <% else %>
                 <%= image_tag "https://eu.ui-avatars.com/api/?name=#{assignment.asker.full_name.gsub(" ", "+")}", class: "position-absolute avatar-xl rounded-circle" %>
               <% end %>
@@ -42,5 +42,6 @@
       </div>
     </div>
   </div>
+
 <% end %>
 

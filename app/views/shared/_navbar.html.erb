@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-ajudai">
   <%= link_to root_path , class: "navbar-brand hoverable" do %>
   <h4 style="font-family: 'Josefin Sans', sans-serif; color: #f6b93b;"> <span class="fas fa-hands-helping"></span><strong>AJUDA AÍ</strong></h4>
     <% end %>
@@ -6,24 +6,24 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">
     <ul class="navbar-nav">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= render "shared/new_request_modal" %>
+          <%= link_to "Criar Pedido", new_request_path, class: "btn-nav nav-link hover-nav" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Pedidos", requests_path, class: "btn-nav nav-link" %>
+          <%= link_to "Pedidos", requests_path, class: "btn-nav nav-link hover-nav" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Meus Pedidos", user_requests_path, class: "btn-nav nav-link" %>
+          <%= link_to "Gerir Pedidos", user_requests_path, class: "btn-nav nav-link hover-nav" %>
         </li>
         <li class="nav-item">
-          <%= link_to "#{current_user.first_name}", user_path(current_user), class: "btn-nav nav-link " %>
+          <%= link_to "#{current_user.first_name}", user_path(current_user), class: "btn-nav nav-link hover-nav" %>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, width: 100, height: 100, crop: :thumb, gravity: :face, class: "avatar rounded-circle hoverable dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= cl_image_tag current_user.photo.key, width: 60, height: 37, crop: :thumb, gravity: :face, class: "avatar rounded-circle hoverable dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else %>
             <%= image_tag "https://eu.ui-avatars.com/api/?name=#{current_user.full_name.gsub(" ", "+")}", class: "avatar rounded-circle hoverable dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
