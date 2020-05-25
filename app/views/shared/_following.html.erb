@@ -3,7 +3,7 @@
   <span id="settingsFollowing">A seguir</span>
 </div>
 
-<% unless @user.all_favorited.count.blank? %>
+<% unless @user.all_favorited.count.nil? %>
   <div class="modal fade" id="followingModalLong" tabindex="-1" role="dialog" aria-labelledby="followingModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

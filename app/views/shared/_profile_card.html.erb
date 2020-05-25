@@ -1,7 +1,7 @@
 <%= link_to user, class: "text-decoration-none" do %>
-  <div class="card border border border-light hoverable" style='background: linear-gradient(180deg, rgba(130,50,150,2) 12%, transparent);;'>
+  <div class="card border border border-light hoverable" style='background: linear-gradient(180deg, rgba(130,50,150,2) 12%, transparent);'>
     <div class="card-body text-center">
-      <% if current_user.photo.attached? %>
+      <% if user.photo.attached? %>
         <%= cl_image_tag user.photo.key, width: 100, height: 100, crop: :thumb, gravity: :face, class: "avatar-xl rounded-circle mb-3" %>
       <% else %>
         <%= image_tag "https://eu.ui-avatars.com/api/?name=#{user.full_name.gsub(" ", "+")}", class: "avatar-xl rounded-circle mb-3" %>

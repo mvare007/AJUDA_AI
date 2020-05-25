@@ -1,6 +1,6 @@
 <div class="container">
   <%= render 'shared/user_show_card', user: @user %>
-  <div class="cards mt-5">
+  <div class="cards mt-5" id="this_users_requests">
     <% @user.requests.each do |request| %>
       <div class="card my-3 hoverable">
         <%= render 'shared/request_card', request: request %>
@@ -8,8 +8,3 @@
     <% end %>
   </div>
 </div>
-
-<!-- TODO -->
-<%# if @user == current_user %>
-  <%#= render 'shared/bookmarked' %>
-<%# end %>

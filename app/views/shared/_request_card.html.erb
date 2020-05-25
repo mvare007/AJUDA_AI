@@ -6,7 +6,7 @@
         <p class="badge badge-light"><%= request.category %></p>
         <p style="font-size: 14px;" class="text-muted"><%= time_ago_in_words(request.created_at, format: :short) %></p>
       </div>
-      <h5 class="card-title"><strong><%= request.title %></strong></h5>
+      <h6 class="card-title"><strong><%= request.title %></strong></h6>
       <div class="d-inline-flex">
         <p class="fas fa-map-marker-alt mr-1"></p>
         <p class="text-dark"><%= request.city %></p>

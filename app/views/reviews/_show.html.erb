@@ -1,5 +1,5 @@
 <% @user.reviews.each do |review| %>
-  <div class="card-review">
+  <div class="card-review my-2">
     <% if review.request.user.photo.attached? %>
       <%= cl_image_tag review.request.user.photo.key, width: 100, height: 100, crop: :thumb, gravity: :face, class: "avatar" %>
     <% else %>
@@ -10,7 +10,7 @@
         <span class="fa fa-star checked text-warning"></span>
       <% end %>
       <p>"<%= review.content %>"</p>
-      <p>- <%= link_to review.request.user.full_name, user_path(review.request.user), class: "text-decoration-none text-muted" %></p>
+      <p>- <%= link_to review.request.user.full_name, user_path(review.request.user), class: "text-decoration-none text-dark-50 hoverable" %></p>
     </div>
   </div>
 <% end %>
