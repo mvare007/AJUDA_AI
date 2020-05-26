@@ -3,24 +3,24 @@
   <%= render 'shared/map' %>
 
   <% if @requests_near.count >= 1 %>
-    <h1 class="text-white-50">Em <%= current_user.city %>:</h1>
+
+    <h1 class="text-header-2">Em <%= current_user.city %>:</h1>
+    <hr class="hr-vol">
+
     <div class="cards my-5">
       <% @requests_near.each do |request| %>
-        <div class="card hoverable">
-          <%= link_to request_path(request), class: 'nounderline' do %>
-          <%= image_tag "https://source.unsplash.com/random", class: "card-img-top"  %>
-          <div class="card-block text-center">
-            <h4 class="card-title nounderline"><strong><%= request.title %></strong></h4>
-            <p class="card-text nounderline"><%= request.description %></p>
-          </div>
-        <% end %>
-        </div>
+        <%= render 'shared/request_card', request: request %>
       <% end %>
     </div>
+
+    <h1 class="text-header-2">Todos os pedidos</h1>
+    <hr class="hr-vol">
   <% end %>
+
   <div class="cards my-5">
     <% @requests.each do |request| %>
       <%= render 'shared/request_card', request: request %>
     <% end %>
   </div>
+
 </div>

@@ -3,7 +3,9 @@
   background: linear-gradient(180deg, #8836BF 12%, #762EA6);
   justify-content: space-around;
   align-content: space-between;
-  border-bottom: 6px solid #F2E527;
+  border-bottom: 6px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(180deg, rgba(255,201,2,1) 28%, rgba(251,226,55,1) 52%);
   min-height: 120px;
 }
 

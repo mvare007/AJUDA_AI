@@ -71,3 +71,16 @@
   -webkit-transform: scale(1);
   transform: scale(1);
 }
+
+.text-header-2 {
+  padding-top: 50px;
+  margin-top: 20px;
+  font-size: 50px;
+  color: white;
+}
+
+.hr-vol {
+  border: none;
+  height:10px;
+  background: linear-gradient(180deg, rgba(255,201,2,1) 28%, rgba(251,226,55,1) 52%);
+}
