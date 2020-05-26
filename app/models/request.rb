@@ -15,6 +15,13 @@ class Request < ApplicationRecord
   validates :zip_code, format: { with: /\d{4}\-\d{3}/}
   validates :city, presence: true
 
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_city,
+    against: [ :title, :city ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   def complete?
     self.completed ? "Sim" : "Não"
   end

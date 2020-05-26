@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   get '/user/requests/', to: 'pages#requests', as: 'user_requests'
+  get '/search/', to: 'pages#search', as: 'search'
 
   resources :assignments, only: [:create, :update, :destroy]
   resources :reviews, only: [:new, :create]

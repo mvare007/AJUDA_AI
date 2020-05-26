@@ -21,6 +21,7 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'gemoji'
 gem 'turbolinks', '~> 5.2.0'
 gem "recaptcha"
+gem 'pg_search'
 
 group :development do
   gem 'faker'

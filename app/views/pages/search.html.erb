@@ -1,0 +1,21 @@
+<div class="container">
+
+  <% if @requests || @users %>
+    <h4 class="text-header-2 mb-5"><%= @requests.count + @users.count  %> <%= "Resultado".pluralize(@requests.count || @users.count) %></h4>
+    <hr class="hr-vol">
+
+    <div class="cards my-5">
+      <% @requests.each do |request| %>
+        <%= render 'shared/request_card', request: request %>
+      <% end %>
+    </div>
+
+    <div class="cards my-5">
+      <% @users.each do |user| %>
+        <%= render 'shared/profile_card', user: user %>
+      <% end %>
+    </div>
+  <% else %>
+    <h4 class="text-header-2">Sem resultados</h4>
+  <% end %>
+</div>
