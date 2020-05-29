@@ -52,6 +52,11 @@ class RequestsController < ApplicationController
     end
   end
 
+  def category
+    @requests = Request.where(category: params[:category])
+    @other_requests = Request.all.sample(10)
+  end
+
   private
 
   def set_request

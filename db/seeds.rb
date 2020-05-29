@@ -26,7 +26,7 @@ puts 'Created 1 user...'
   request = Request.create!(
     title: Faker::Verb.base,
     description: Faker::Lorem.paragraph(sentence_count: 2),
-    category: ["Compras", "Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Animais", "Denúncia", "Outro"].sample,
+    category: ["Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Animais", "Denúncia", "Outro"].sample,
     person_name: Faker::FunnyName.name,
     age: rand(20..95),
     address: Faker::Address.street_address,
@@ -65,7 +65,7 @@ puts "Creating demo request"
   demo_request = Request.create!(
     title: 'Ajudar Dona Cremilde a ir às compras',
     description: Faker::Lorem.paragraph(sentence_count: 10),
-    category: ["Compras", "Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Animais", "Denúncia", "Outro"].sample,
+    category: ["Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Animais", "Denúncia", "Outro"].sample,
     person_name: Faker::FunnyName.name,
     age: rand(20..95),
     address: 'Avenida da Liberdade, Lisboa',

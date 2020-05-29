@@ -1,0 +1,97 @@
+<div class="">
+  <h1 class="text-header-3">Categorias</h1>
+  <hr class="hr-vol">
+  <br>
+
+  <div class="d-flex flex-row justify-content-between m-3">
+
+    <%= link_to category_path(category: "Reparações"), class: "hoverable" do %>
+      <div class="d-flex flex-column">
+        <i class="fas fa-hammer category-badge"></i>
+        <p>Reparações</p>
+      </div>
+    <% end %>
+
+    <%= link_to category_path(category: "Recados"), class: "hoverable" do %>
+      <div class="d-flex flex-column">
+        <i class="fas fa-people-carry category-badge"></i>
+        <p>Recados</p>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="d-flex flex-row justify-content-between m-2">
+
+    <%= link_to category_path(category: "Companhia"), class: "hoverable" do %>
+      <div class="d-flex flex-column">
+        <img class="category-badge-img" src="https://image.flaticon.com/icons/svg/2917/2917865.svg" alt="Companhia">
+        <p>Companhia</p>
+      </div>
+    <% end %>
+
+    <%= link_to category_path(category: "Donativos"), class: "hoverable" do %>
+      <div class="d-flex flex-column">
+        <img class="category-badge-img" src="https://image.flaticon.com/icons/png/512/101/101942.png" alt="Donativos">
+        <p>Donativos</p>
+      </div>
+    <% end %>
+
+  </div>
+
+
+  <div class="d-flex flex-row justify-content-between m-2">
+
+    <%= link_to category_path(category: "Associação"), class: "hoverable" do %>
+      <div class="d-flex flex-column">
+        <img class="category-badge-img" src="https://image.flaticon.com/icons/png/512/99/99497.png" alt="Associação">
+        <p>Associação</p>
+      </div>
+    <% end %>
+
+    <%= link_to category_path(category: "Animais"), class: "hoverable" do %>
+      <div class="d-flex flex-column">
+        <i class="fas fa-cat category-badge"></i>
+        <p>Animais</p>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="d-flex flex-row justify-content-between m-2">
+
+    <%= link_to category_path(category: "Cuidados"), class: "hoverable" do %>
+      <div class="d-flex flex-column">
+        <i class="fas fa-hands-helping category-badge"></i>
+        <p>Cuidados</p>
+      </div>
+    <% end %>
+
+    <%= link_to category_path(category: "Saúde"), class: "hoverable" do %>
+      <div class="d-flex flex-column">
+        <i class="fas fa-medkit category-badge"></i>
+        <p>Saúde</p>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="d-flex flex-row justify-content-between m-2">
+
+    <%= link_to category_path(category: "Denúncia"), class: "hoverable" do %>
+      <div class="d-flex flex-column">
+        <img class="category-badge-img" src="https://image.flaticon.com/icons/png/512/61/61114.png" alt="Denúncia">
+        <p>Denúncia</p>
+      </div>
+    <% end %>
+
+    <%= link_to category_path(category: "Outro"), class: "hoverable" do %>
+      <div class="d-flex flex-column">
+        <i class="far fa-hand-peace category-badge"></i>
+        <p>Outro</p>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>

@@ -14,7 +14,7 @@ const fitMapToMarkers = (map, markers) => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/satellite-streets-v11'
+      style: 'mapbox://styles/mvare007/ckas5bqgh0og81ilqp5atiqi9'
     });
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {

@@ -1,6 +1,13 @@
 <div class="container my-5">
 
-  <%= render 'shared/map' %>
+  <div class="row">
+    <div class="col-3">
+      <%= render 'requests/categories'%>
+    </div>
+    <div class="col-9">
+      <%= render 'shared/map' %>
+    </div>
+  </div>
 
   <% if @requests_near.count >= 1 %>
 
@@ -8,7 +15,7 @@
     <hr class="hr-vol">
 
     <div class="cards my-5">
-      <% @requests_near.each do |request| %>
+      <% ordered_by_creation(@requests_near).each do |request| %>
         <%= render 'shared/request_card', request: request %>
       <% end %>
     </div>
@@ -18,7 +25,7 @@
   <% end %>
 
   <div class="cards my-5">
-    <% @requests.each do |request| %>
+    <% ordered_by_creation(@requests).each do |request| %>
       <%= render 'shared/request_card', request: request %>
     <% end %>
   </div>

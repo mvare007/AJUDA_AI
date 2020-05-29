@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/user/requests/', to: 'pages#requests', as: 'user_requests'
   get '/search/', to: 'pages#search', as: 'search'
+  get 'category', to: 'requests#category', as: 'category'
+
 
   resources :assignments, only: [:create, :update, :destroy]
   resources :reviews, only: [:new, :create]

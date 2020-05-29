@@ -17,17 +17,17 @@
     <% if current_user.favorited?(user, scope: :follow) %>
       <%= link_to 'A seguir', user_follow_path(user), class: "btn btn-warning mt-3"  %>
     <% elsif user != current_user %>
-      <%= link_to 'Seguir', user_follow_path(user), class: "btn btn-info mt-3" %>
+      <%= link_to 'Seguir', user_follow_path(user), class: "btn btn-light mt-3" %>
     <% end %>
     <hr style="border: 1px solid #341D48;">
-    <div class="row">
-      <div class="col-sm-12 col-md-8 col-lg-4">
+    <div class="row justify-content-sm-between">
+      <div class="col-sm-12 col-md-8 col-lg-4 hoverable">
         <%= render 'shared/following' %>
       </div>
-      <div class="col-sm-12 col-md-8 col-lg-4">
+      <div class="col-sm-12 col-md-8 col-lg-4 hoverable">
         <%= render 'shared/followers' %>
       </div>
-      <div class="col-sm-12 col-md-12 col-lg-4">
+      <div class="col-sm-12 col-md-12 col-lg-4 hoverable">
         <div onClick="document.getElementById('this_users_requests').scrollIntoView({ behaviour: 'smooth' });">
           <h1 id="userRequests"><%= @user.requests.count %></h1>
           <span id="settingsUserRequests">Pedidos</span>
