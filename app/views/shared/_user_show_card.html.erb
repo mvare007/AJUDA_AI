@@ -1,7 +1,7 @@
-<div class="card mt-5" style='background: linear-gradient(180deg, rgba(246,185,59,1) 12%, rgba(228,182,88,1) 96%); '>
+<div class="card mt-5" style='background: linear-gradient(180deg, rgba(231, 158, 68,1) 12%, rgba(228,190,90,1) 96%); '>
   <div class="card-body text-center">
     <% if user.photo.attached? %>
-      <%= cl_image_tag user.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face, class: 'avatar-xl rounded-circle hoverable my-2' %>
+      <%= cl_image_tag user.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face, class: 'avatar-xl rounded-circle my-2' %>
     <% else %>
       <img class="avatar-xl rounded-circle my-2" src="https://eu.ui-avatars.com/api/?name=<%= user.full_name.gsub(" ", "+") %>}" alt="Bologna">
     <% end %>
@@ -12,7 +12,7 @@
     </div>
     <p class="card-text text-body my-5"><%= user.about_me %></p>
     <% unless user.reviews.blank? %>
-      <%= render "shared/reviews_modal" %>
+      <%= render "reviews/reviews_modal" %>
     <% end %>
     <% if current_user.favorited?(user, scope: :follow) %>
       <%= link_to 'A seguir', user_follow_path(user), class: "btn btn-warning mt-3"  %>

@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-ajudai">
   <%= link_to root_path , class: "navbar-brand hoverable" do %>
-    <h4 id="logo"> <span class="fas fa-hands-helping"></span><strong>AJUDA AÍ</strong></h4>
+    <h4 id="logo"> <span class="fas fa-hands-helping"></span><strong>AJUDA AÍ !</strong></h4>
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,32 +10,34 @@
   <div class="collapse navbar-collapse " id="navbarSupportedContent">
     <ul class="navbar-nav">
       <% if user_signed_in? %>
-        <li class="nav-item form-inline">
-          <%= form_tag search_path, method: :get do %>
+        <li class="nav-item">
+          <div class="form-inline mr-5">
+            <%= form_tag search_path, method: :get do %>
 
-            <%= button_tag(type: "submit", class: "btn-sm badge-pill btn-primary") do %>
-              <i class="fas fa-search"></i>
+              <%= button_tag(type: "submit", class: "btn-sm rounded-circle badge-pill btn-primary") do %>
+                <i class="fas fa-search" style="font-size:20px;"></i>
+              <% end %>
+
+              <%= text_field_tag :query,
+                params[:query],
+                class: "form-control badge-pill",
+                placeholder: "Pesquisa..." %>
             <% end %>
-
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control-sm badge-pill",
-              placeholder: "Pesquisa..." %>
-          <% end %>
+          </div>
         </li>
         <li class="nav-item active">
-          <%= link_to "Criar Pedido", new_request_path, class: "btn-nav nav-link hover-nav" %>
+          <%= link_to "Criar", new_request_path, class: "btn-nav nav-link hover-nav" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Pedidos", requests_path, class: "btn-nav nav-link hover-nav" %>
+          <%= link_to "Ver", requests_path, class: "btn-nav nav-link hover-nav" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Gerir Pedidos", user_requests_path, class: "btn-nav nav-link hover-nav" %>
+          <%= link_to "Gerir", user_requests_path, class: "btn-nav nav-link hover-nav" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item justify-self-end">
           <%= link_to "#{current_user.first_name}", user_path(current_user), class: "btn-nav nav-link hover-nav" %>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown justify-self-end">
           <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, width: 60, height: 37, crop: :thumb, gravity: :face, class: "avatar rounded-circle hoverable dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else %>

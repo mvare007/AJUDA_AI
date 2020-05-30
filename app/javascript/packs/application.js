@@ -32,3 +32,5 @@ submitForms()
 
 import { previewImageOnFileSelect } from '../components/photo_preview';
 previewImageOnFileSelect();
+
+
