@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   resources :chatrooms, only: [:index, :show, :destroy] do
     resources :messages, only: :create
   end
+
+  resources :pictures, only: :destroy
 end

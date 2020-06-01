@@ -23,6 +23,7 @@ gem 'turbolinks', '~> 5.2.0'
 gem "recaptcha"
 gem 'pg_search'
 gem 'cookies_eu'
+gem 'carrierwave'
 
 group :development do
   gem 'faker'

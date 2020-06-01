@@ -43,8 +43,8 @@
 
         <div class="col-12">
           <div class="cards-user-request m-3">
-            <% @requests.each do |request| %>
-            <div class="card">
+            <% ordered_by_creation(@requests).each do |request| %>
+            <div class="card" name="request-<%= request.id %>">
               <%= link_to request_path(request), class: 'nounderline' do %>
               <div class="text-center">
                 <%= image_tag "https://source.unsplash.com/random", class: "card-img-top-sm float-right"  %>
@@ -61,16 +61,9 @@
                     <button class="btn-block btn-vol-sm">Eliminar <i class="fas fa-trash"></i></button>
                   <% end %>
 
-                  <button type="button" class="btn-block btn-vol-sm" data-toggle="modal" data-target="#editModal-<%= request.id %>">Editar <i class="fas fa-edit"></i></button>
-                  <div class="modal fade bd-edit-modal-lg" id="editModal-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                      <div class="modal-content bg-white">
-                        <div class="container-fluid">
-                          <%= render 'shared/request_form', request: request %>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <%= link_to edit_request_path(request) do %>
+                    <button class="btn-block btn-vol-sm">Editar <i class="fas fa-edit"></i></button>
+                  <% end %>
 
                   <div>
                     <% if !request.completed && !request.volunteer.assignments.blank? %>

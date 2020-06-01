@@ -1,8 +1,8 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-7 col-sm-offset-7 mx-auto">
+    <div class="col-xs-12 col-sm-12 col-sm-offset-12 mx-auto">
       <div class="form-request">
-        <h1 class="text-header-3">Novo Pedido</h1>
+        <h1>Editar</h1>
         <hr class="hr-vol">
 
         <%= simple_form_for @request do |f| %>
@@ -63,16 +63,16 @@
                         input_html: { maxlength: 9 } %>
             </div>
           </div>
-          <%= f.input :pictures,
-                      as: :file,
-                      input_html: { multiple: true }%>
+            <% @request.pictures.each do |picture| %>
+                <li><%= cl_image_tag(picture.photo, width: 400, height: 300, crop: :fill) %></li>
+                <%= link_to "Delete image", picture_path(picture), method: :destroy %>
+              <% end %>
 
-          <%= recaptcha_tags %>
-
-          <%= f.submit 'Criar', class: 'btn btn-block btn-vol' %>
+          <%= f.submit 'Confirmar alteração', class: 'btn btn-block btn-vol' %>
         <% end %>
 
       </div>
     </div>
   </div>
+
 </div>

@@ -4,7 +4,7 @@ class Request < ApplicationRecord
   has_one :chatroom, dependent: :destroy
   has_many :assignments, dependent: :destroy
   has_one :volunteer, dependent: :destroy
-  has_many_attached :photos
+  has_many :pictures, dependent: :destroy
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
   acts_as_favoritable

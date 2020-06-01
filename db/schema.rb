@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_102723) do
+ActiveRecord::Schema.define(version: 2020_06_01_192455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,14 @@ ActiveRecord::Schema.define(version: 2020_05_26_102723) do
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
   end
 
+  create_table "pictures", force: :cascade do |t|
+    t.string "photo"
+    t.bigint "request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_pictures_on_request_id"
+  end
+
   create_table "requests", force: :cascade do |t|
     t.string "title", null: false
     t.text "description", null: false
@@ -154,6 +162,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_102723) do
   add_foreign_key "chatrooms", "requests"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "pictures", "requests"
   add_foreign_key "requests", "users"
   add_foreign_key "reviews", "requests"
   add_foreign_key "reviews", "users"
