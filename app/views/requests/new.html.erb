@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-7 col-sm-offset-7 mx-auto">
       <div class="form-request">
-        <h1>Novo Pedido</h1>
+        <h1 class="text-header-3">Novo Pedido</h1>
         <hr class="hr-vol">
 
         <%= simple_form_for @request do |f| %>
@@ -67,7 +67,7 @@
                       as: :file,
                       input_html: { multiple: true,
                       class: 'd-none', id: 'photo-input' },
-                      label_html: { class: 'upload-photo'},
+                      label_html: { class: 'upload-photo text-dark'},
                       label: 'Adiciona fotos 📷 '  %>
           <div class="text-center">
             <%= image_tag "", width: 100, class: "hidden m-3 img-thumbnail", id: "photo-preview" %>

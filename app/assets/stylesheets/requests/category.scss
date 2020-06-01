@@ -43,7 +43,9 @@
   border-radius: 50px;
   :hover {
     opacity: 0.8;
-
+    transform: scale(0.9);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
   }
 }
 

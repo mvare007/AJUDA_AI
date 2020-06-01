@@ -22,6 +22,7 @@ gem 'gemoji'
 gem 'turbolinks', '~> 5.2.0'
 gem "recaptcha"
 gem 'pg_search'
+gem 'cookies_eu'
 
 group :development do
   gem 'faker'

@@ -26,6 +26,9 @@
     <hr class="hr-vol">
   <% end %>
 
+  <h1 class="text-header-2">Mais recentes:</h1>
+  <hr class="hr-vol">
+
   <div class="cards my-5">
     <% ordered_by_creation(@requests).each do |request| %>
       <%= render 'shared/request_card', request: request %>
