@@ -27,6 +27,7 @@
           <%= f.input :description,
                       label: false,
                       placeholder: 'Descrição',
+                      input_html: {rows: 5},
                       error: 'Por favor introduz a Descrição' %>
           <div class="form-row">
             <div class="col-md-9">
@@ -63,12 +64,18 @@
                         input_html: { maxlength: 9 } %>
             </div>
           </div>
+          <div class="cards">
             <% @request.pictures.each do |picture| %>
-                <li><%= cl_image_tag(picture.photo, width: 400, height: 300, crop: :fill) %></li>
-                <%= link_to "Delete image", picture_path(picture), method: :destroy %>
+            <div class="card w-50 my-3 bg-transparent">
+              <%= link_to picture_path(picture), method: :delete do %>
+                <i class="fas fa-times text-white hoverable"></i>
               <% end %>
+              <%= cl_image_tag(picture.photo, width: 120, height: 75, crop: :fill, class: "mx-auto rounded") %>
+            </div>
+            <% end %>
+          </div>
 
-          <%= f.submit 'Confirmar alteração', class: 'btn btn-block btn-vol' %>
+          <%= f.submit 'Salvar alterações', class: 'btn btn-block btn-vol' %>
         <% end %>
 
       </div>

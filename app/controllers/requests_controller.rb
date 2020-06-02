@@ -36,6 +36,8 @@ class RequestsController < ApplicationController
   def update
     if @request.update(request_params)
       redirect_to user_requests_path(anchor: "request-#{request[:id]}")
+    else
+      render :edit, notice: "Corrige os erros e tenta novamente"
     end
   end
 
@@ -73,7 +75,7 @@ class RequestsController < ApplicationController
   def create_pictures
     photos = params.dig(:request, :pictures) || []
     photos.each do |photo|
-      @request.pictures.create(photo: photo)
+      @request.pictures.create!(photo: photo)
     end
   end
 

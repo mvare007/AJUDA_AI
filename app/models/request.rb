@@ -10,7 +10,7 @@ class Request < ApplicationRecord
   acts_as_favoritable
 
   validates :title, presence: true
-  validates :description, presence: true, length: { maximum: 1000 }
+  validates :description, presence: true, length: { maximum: 2000 }
   validates :category, inclusion: { in: ["Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Animais", "Denúncia", "Outro"] }
   validates :zip_code, format: { with: /\d{4}\-\d{3}/}
   validates :city, presence: true

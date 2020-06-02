@@ -1,41 +1,42 @@
 <% if @request.pictures.count >= 1 %>
 
-  <div class="carousel">
-   <input type="radio" id="carousel-1" name="carousel[]" checked>
-   <input type="radio" id="carousel-2" name="carousel[]">
-   <input type="radio" id="carousel-3" name="carousel[]">
+  <div class="carousel rounded mt-3">
+    <% @request.pictures.each do |picture| %>
+      <input type="radio" id="carousel-<%= picture.id %>" name="carousel[]" checked>
+    <% end %>
+
      <ul class="carousel__items">
      <% @request.pictures.each do |picture| %>
-         <li class="carousel__item"><%= cl_image_tag(picture.photo) %></li>
+         <li class="carousel__item" name="carousel-<%= picture.id %>"><%= cl_image_tag(picture.photo) %></li>
        <% end %>
      </ul>
     <div class="carousel__prev">
-       <label for="carousel-1"></label>
-       <label for="carousel-2"></label>
-       <label for="carousel-3"></label>
+      <% @request.pictures.each do |picture| %>
+       <label for="carousel-<%= picture.id %>"></label>
+      <% end %>
     </div>
     <div class="carousel__next">
-      <label for="carousel-1"></label>
-      <label for="carousel-2"></label>
-      <label for="carousel-3"></label>
+      <% @request.pictures.each do |picture| %>
+       <label for="carousel-<%= picture.id %>"></label>
+      <% end %>
     </div>
     <div class="carousel__nav">
-      <label for="carousel-1"></label>
-      <label for="carousel-2"></label>
-      <label for="carousel-3"></label>
+      <% @request.pictures.each do |picture| %>
+       <label for="carousel-<%= picture.id %>"></label>
+      <% end %>
     </div>
   </div>
 
 <% else %>
 <!-- Para teste apagar depois -->
-  <div class="carousel">
+  <div class="carousel rounded mt-3">
    <input type="radio" id="carousel-1" name="carousel[]" checked>
    <input type="radio" id="carousel-2" name="carousel[]">
    <input type="radio" id="carousel-3" name="carousel[]">
      <ul class="carousel__items">
-         <li class="carousel__item"><img src="//lh5.googleusercontent.com/-cTEgPOnd3l8/U8-EmaZ4KNI/AAAAAAAABc8/6eacbALkQ6A/w1358-h905-no/carousel-1.JPG" alt=""></li>
-         <li class="carousel__item"><img src="//lh4.googleusercontent.com/-ntVHbbWX5eo/U8-EmV8P4cI/AAAAAAAABc4/ICYBGkcztTc/w1358-h905-no/carousel-2.jpg" alt=""></li>
-         <li class="carousel__item"><img src="//lh5.googleusercontent.com/-batEXUZE_e4/U8-EmLF9-hI/AAAAAAAABc0/J3tJVUa6Buk/w1358-h905-no/carousel-3.jpg" alt=""></li>
+       <li class="carousel__item"><img src="//lh5.googleusercontent.com/-cTEgPOnd3l8/U8-EmaZ4KNI/AAAAAAAABc8/6eacbALkQ6A/w1358-h905-no/carousel-1.JPG" alt=""></li>
+       <li class="carousel__item"><img src="//lh4.googleusercontent.com/-ntVHbbWX5eo/U8-EmV8P4cI/AAAAAAAABc4/ICYBGkcztTc/w1358-h905-no/carousel-2.jpg" alt=""></li>
+       <li class="carousel__item"><img src="//lh5.googleusercontent.com/-batEXUZE_e4/U8-EmLF9-hI/AAAAAAAABc0/J3tJVUa6Buk/w1358-h905-no/carousel-3.jpg" alt=""></li>
      </ul>
     <div class="carousel__prev">
        <label for="carousel-1"></label>

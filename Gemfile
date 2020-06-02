@@ -17,13 +17,13 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'geocoder'
 gem 'acts_as_favoritor'
-gem 'cloudinary', '~> 1.12.0'
+gem 'carrierwave'
+gem 'cloudinary'
 gem 'gemoji'
 gem 'turbolinks', '~> 5.2.0'
 gem "recaptcha"
 gem 'pg_search'
 gem 'cookies_eu'
-gem 'carrierwave'
 
 group :development do
   gem 'faker'
