@@ -10,15 +10,25 @@
             <i class="far fa-bookmark m-2" style="font-size: 18px;"></i>
           <% end %>
         <% end %>
-        <h1 id="request-title"><strong><%= @request.title %></strong></h1>
+        <h1 id="request-title"><%= @request.title %></h1>
       </div>
       <hr class="hr-vol">
       <p id="description"><%= @request.description %></p>
     </div>
     <div class="col-sm-12 col-md-4 col-lg-4 mt-3">
+
       <%= render 'shared/profile_card', user: @request.user %>
-      <%= link_to 'Quero ajudar!', assignments_path(request: @request.id), method: :post, class: 'btn btn-block btn-vol rounded' %>
+
+      <% if @assignment %>
+        <%= link_to "Retirar", assignment_path(@assignment), method: :delete, remote: true, class: 'btn btn-block btn-vol rounded mt-3' %>
+      <% else %>
+        <%= link_to 'Quero ajudar !', assignments_path(request: @request.id), method: :post, class: 'btn btn-block btn-vol rounded color-change-2x mt-3' %>
+      <% end %>
+
       <%= render 'shared/map-small' %>
+
+      <%= render 'shared/person_request', request: @request %>
+
     </div>
     <div class="col-sm-12 col-md-8 col-lg-2 mt-3">
 

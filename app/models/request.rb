@@ -5,7 +5,7 @@ class Request < ApplicationRecord
   has_many :assignments, dependent: :destroy
   has_one :volunteer, dependent: :destroy
   has_many :pictures, dependent: :destroy
-  geocoded_by :address
+  geocoded_by :full_address
   after_validation :geocode, if: :will_save_change_to_address?
   acts_as_favoritable
 
@@ -22,8 +22,8 @@ class Request < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-  def complete?
-    self.completed ? "Sim" : "Não"
+  def full_address
+    "#{self.address}" + ", " + "#{self.zip_code}" + " " + "#{self.city}"
   end
 
 end

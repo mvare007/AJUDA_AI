@@ -11,6 +11,7 @@ class RequestsController < ApplicationController
   def show
     single_map_marker
     @chatroom = Chatroom.includes(messages: :user).where(request: @request).first
+    @assignment = @request.assignments.where(asker: current_user).first
   end
 
   def new
@@ -37,7 +38,7 @@ class RequestsController < ApplicationController
     if @request.update(request_params)
       redirect_to user_requests_path(anchor: "request-#{request[:id]}")
     else
-      render :edit, notice: "Corrige os erros e tenta novamente"
+      render :edit
     end
   end
 

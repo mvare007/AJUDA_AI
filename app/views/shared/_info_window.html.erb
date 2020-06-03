@@ -1,5 +1,6 @@
 <div class="mt-2">
   <h6 class="font-weight-bold"><%= request.title %></h2>
-  <p><%= request.address %></p>
-  <%= link_to "Ver", request_path(request), class: "btn btn-block btn-light mx-auto", style: "font-size: 14px;" %>
+    <hr class="hr-vol">
+  <p><%= request.full_address %></p>
+  <%= link_to "Ver", request_path(request), class: "btn btn-block btn-primary mx-auto", style: "font-size: 14px;" %>
 </div>
