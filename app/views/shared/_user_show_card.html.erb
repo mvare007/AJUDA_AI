@@ -1,7 +1,7 @@
-<div class="card mt-5" style='background: linear-gradient(180deg, rgba(246,185,59,1) 12%, rgba(228,182,88,1) 96%); '>
+<div class="card mt-5" style='background: linear-gradient(180deg, rgba(231, 158, 68,1) 12%, rgba(228,190,90,1) 96%); '>
   <div class="card-body text-center">
     <% if user.photo.attached? %>
-      <%= cl_image_tag user.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face, class: 'avatar-xl rounded-circle hoverable my-2' %>
+      <%= cl_image_tag user.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face, class: 'avatar-xl rounded-circle my-2' %>
     <% else %>
       <img class="avatar-xl rounded-circle my-2" src="https://eu.ui-avatars.com/api/?name=<%= user.full_name.gsub(" ", "+") %>}" alt="Bologna">
     <% end %>
@@ -12,22 +12,22 @@
     </div>
     <p class="card-text text-body my-5"><%= user.about_me %></p>
     <% unless user.reviews.blank? %>
-      <%= render "shared/reviews_modal" %>
+      <%= render "reviews/reviews_modal" %>
     <% end %>
     <% if current_user.favorited?(user, scope: :follow) %>
       <%= link_to 'A seguir', user_follow_path(user), class: "btn btn-warning mt-3"  %>
     <% elsif user != current_user %>
-      <%= link_to 'Seguir', user_follow_path(user), class: "btn btn-info mt-3" %>
+      <%= link_to 'Seguir', user_follow_path(user), class: "btn btn-light mt-3" %>
     <% end %>
     <hr style="border: 1px solid #341D48;">
-    <div class="row">
-      <div class="col-sm-12 col-md-8 col-lg-4">
+    <div class="row justify-content-sm-between">
+      <div class="col-sm-12 col-md-8 col-lg-4 hoverable">
         <%= render 'shared/following' %>
       </div>
-      <div class="col-sm-12 col-md-8 col-lg-4">
+      <div class="col-sm-12 col-md-8 col-lg-4 hoverable">
         <%= render 'shared/followers' %>
       </div>
-      <div class="col-sm-12 col-md-12 col-lg-4">
+      <div class="col-sm-12 col-md-12 col-lg-4 hoverable">
         <div onClick="document.getElementById('this_users_requests').scrollIntoView({ behaviour: 'smooth' });">
           <h1 id="userRequests"><%= @user.requests.count %></h1>
           <span id="settingsUserRequests">Pedidos</span>

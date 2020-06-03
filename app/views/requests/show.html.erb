@@ -1,33 +1,48 @@
-<div class="container-lg">
+<div class="container">
   <div class="row mt-5">
-    <div class="col-sm-12 col-md-8 col-lg-8">
+    <div class="col-sm-12 col-md-8 col-lg-8 mt-3 purple-container">
       <%= render 'requests/photos_carousel' %>
-      <div class="d-inline-flex justify-content-between" id="bookmark">
-        <h1 class="mr-3"><strong><%= @request.title %></strong></h1>
+      <div class="d-inline-flex justify-content-between  mt-3" id="bookmark">
         <%= link_to request_favorite_path(@request) do %>
           <% if @request.favorited_by?(current_user) %>
-            <i class="fas fa-bookmark text-light" style="font-size: 18px;"></i>
+            <i class="fas fa-bookmark m-2" style="font-size: 18px;"></i>
           <% else %>
-            <i class="far fa-bookmark text-white" style="font-size: 18px;"></i>
+            <i class="far fa-bookmark m-2" style="font-size: 18px;"></i>
           <% end %>
         <% end %>
+        <h1 id="request-title"><%= @request.title %></h1>
       </div>
-      <h5><%= @request.description %></h5>
+      <hr class="hr-vol">
+      <p id="description"><%= @request.description %></p>
     </div>
-    <div class="col-sm-12 col-md-8 col-lg-4">
+    <div class="col-sm-12 col-md-4 col-lg-4 mt-3">
+
       <%= render 'shared/profile_card', user: @request.user %>
-      <%= link_to 'Quero ajudar', assignments_path(request: @request.id), method: :post, class: 'btn btn-block btn-vol' %>
-      <%= render 'shared/map' %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-6">
-      <% if @request.user == current_user || @request.volunteer.assignments.where(asker: current_user).present? %>
-        <%= render 'chatrooms/show' %>
+
+      <% if @assignment %>
+        <%= link_to "Retirar", assignment_path(@assignment), method: :delete, remote: true, class: 'btn btn-block btn-vol rounded mt-3' %>
+      <% else %>
+        <%= link_to 'Quero ajudar !', assignments_path(request: @request.id), method: :post, class: 'btn btn-block btn-vol rounded color-change-2x mt-3' %>
       <% end %>
+
+      <%= render 'shared/map-small' %>
+
+      <%= render 'shared/person_request', request: @request %>
+
+    </div>
+    <div class="col-sm-12 col-md-8 col-lg-2 mt-3">
+
     </div>
   </div>
-</div>
+
+  <!-- <div class="row"> -->
+    <!-- <div class="col-sm-12 col-md-8 col-lg-6"> -->
+      <%# if @request.user == current_user || @request.volunteer.assignments.where(asker: current_user).present? %>
+        <%#= render 'chatrooms/show' %>
+      <%# end %>
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </div> -->
 
 
 

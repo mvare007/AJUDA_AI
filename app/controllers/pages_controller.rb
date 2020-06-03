@@ -10,6 +10,13 @@ class PagesController < ApplicationController
     @review = Review.new
   end
 
+  def search
+    if params[:query].present?
+      @requests = Request.search_by_title_and_city(params[:query])
+      @users = User.search_by_first_name_last_name_and_city(params[:query])
+    end
+  end
+
   private
 
   def map(requests)

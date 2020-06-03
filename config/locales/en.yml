@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+
+en:
+  cookies_eu:
+    cookies_text: "Este website utiliza cookies de forma a oferecer uma melhor experiência. Ao continuar, assumimos que aceitas o uso de cookies. Se desejares, podes alterar as definições a qualquer altura."
+    learn_more: "Mais informações"
+    ok: "OK"

@@ -13,7 +13,7 @@
           <div class="mb-5">
             <% if assignment.asker.reviews.where(request: request).blank? %>
               <% if assignment.asker.photo.attached? %>
-                <%= cl_image_tag current_user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, class: "rounded-circle mb-3" %>
+                <%= cl_image_tag assignment.asker.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, class: "rounded-circle mb-3" %>
               <% else %>
                 <%= image_tag "https://eu.ui-avatars.com/api/?name=#{assignment.asker.full_name.gsub(" ", "+")}", class: "rounded-circle mb-3" %>
               <% end %>

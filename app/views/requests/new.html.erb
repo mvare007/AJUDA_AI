@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-xs-12 col-sm-7 col-sm-offset-7 mx-auto">
       <div class="form-request">
-        <h1>Novo Pedido</h1>
-        <hr style="border: none; height:1px; color:#333; background-color:#333;">
+        <h1 class="text-header-3">Novo Pedido</h1>
+        <hr class="hr-vol">
 
         <%= simple_form_for @request do |f| %>
 
@@ -20,13 +20,14 @@
                           label: false,
                           prompt: 'Categoria',
                           placeholder: 'Categoria',
-                          collection: ["Compras", "Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Animais", "Denúncia", "Outro"],
+                          collection: ["Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Animais", "Denúncia", "Outro"],
                           error: 'Por favor selecciona uma Categoria' %>
             </div>
           </div>
           <%= f.input :description,
                       label: false,
                       placeholder: 'Descrição',
+                      input_html: {rows: 5},
                       error: 'Por favor introduz a Descrição' %>
           <div class="form-row">
             <div class="col-md-9">
@@ -63,15 +64,9 @@
                         input_html: { maxlength: 9 } %>
             </div>
           </div>
-          <%= f.input :photos,
+          <%= f.input :pictures,
                       as: :file,
-                      input_html: { multiple: true,
-                      class: 'd-none', id: 'photo-input' },
-                      label_html: { class: 'upload-photo'},
-                      label: 'Adiciona fotos 📷 '  %>
-          <div class="text-center">
-            <%= image_tag "", width: 100, class: "hidden m-3 img-thumbnail", id: "photo-preview" %>
-          </div>
+                      input_html: { multiple: true }%>
 
           <%= recaptcha_tags %>
 

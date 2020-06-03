@@ -11,6 +11,7 @@ class RequestsController < ApplicationController
   def show
     single_map_marker
     @chatroom = Chatroom.includes(messages: :user).where(request: @request).first
+    @assignment = @request.assignments.where(asker: current_user).first
   end
 
   def new
@@ -23,6 +24,7 @@ class RequestsController < ApplicationController
     @volunteer = Volunteer.new(request: @request)
     @request.user = current_user
     if @request.save && @chatroom.save && @volunteer.save || verify_recaptcha(model: @request)
+      create_pictures
       redirect_to request_path(@request), notice: "Pedido criado com sucesso"
     else
       render :new, notice: "Corrige os erros e tenta novamente"
@@ -33,7 +35,11 @@ class RequestsController < ApplicationController
   end
 
   def update
-   redirect_to user_requests_path if @request.update(request_params)
+    if @request.update(request_params)
+      redirect_to user_requests_path(anchor: "request-#{request[:id]}")
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -52,6 +58,11 @@ class RequestsController < ApplicationController
     end
   end
 
+  def category
+    @requests = Request.where(category: params[:category])
+    @other_requests = Request.all.sample(10)
+  end
+
   private
 
   def set_request
@@ -59,7 +70,14 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    @request = params.require(:request).permit(:title, :description, :category, :person_name, :age, :address, :zip_code, :city, :phone_number, :volunteer, :completed, photos: [] )
+    @request = params.require(:request).permit(:title, :description, :category, :person_name, :age, :address, :zip_code, :city, :phone_number, :volunteer, :completed )
+  end
+
+  def create_pictures
+    photos = params.dig(:request, :pictures) || []
+    photos.each do |photo|
+      @request.pictures.create!(photo: photo)
+    end
   end
 
   def map_markers

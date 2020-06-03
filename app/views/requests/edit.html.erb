@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-sm-offset-12 mx-auto">
+      <div class="form-request">
+        <h1>Editar</h1>
+        <hr class="hr-vol">
+
+        <%= simple_form_for @request do |f| %>
+
+          <%= f.error_notification %>
+
+          <div class="form-row">
+            <div class="col-md-8">
+              <%= f.input :title, label: false,
+                          placeholder: 'Título',
+                          error: 'Por favor introduz um Título' %>
+            </div>
+            <div class="col-md-4">
+              <%= f.input :category,
+                          label: false,
+                          prompt: 'Categoria',
+                          placeholder: 'Categoria',
+                          collection: ["Reparações", "Recados", "Saúde", "Cuidados", "Donativos", "Companhia", "Associação", "Animais", "Denúncia", "Outro"],
+                          error: 'Por favor selecciona uma Categoria' %>
+            </div>
+          </div>
+          <%= f.input :description,
+                      label: false,
+                      placeholder: 'Descrição',
+                      input_html: {rows: 5},
+                      error: 'Por favor introduz a Descrição' %>
+          <div class="form-row">
+            <div class="col-md-9">
+              <%= f.input :person_name,
+                          label: false,
+                          placeholder: 'Nome' %>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :age,
+                          label: false, placeholder: 'Idade', input_html: { min: 18, max: 120 }  %>
+            </div>
+          </div>
+          <%= f.input :address,
+                      label: false,
+                      placeholder: 'Morada',
+                      error: 'Por favor introduz a Morada (não será revelada sem a tua permissão)' %>
+          <div class="form-row">
+            <div class="col-md-3">
+              <%= f.input :zip_code,
+                          label: false,
+                          placeholder: 'Código Postal', error: "Por favor introduz um Código Postal válido (0000-000)",
+                          pattern: "/\d{4}\-\d{3}/" %>
+            </div>
+            <div class="col-md-5">
+              <%= f.input :city,
+                          label: false,
+                          placeholder: 'Cidade',
+                          error: 'Por favor introduz a Cidade' %>
+            </div>
+            <div class="col-md-4">
+            <%= f.input :phone_number,
+                        label: false,
+                        placeholder: 'Telefone',
+                        input_html: { maxlength: 9 } %>
+            </div>
+          </div>
+          <div class="cards">
+            <% @request.pictures.each do |picture| %>
+            <div class="card w-50 my-3 bg-transparent">
+              <%= link_to picture_path(picture), method: :delete do %>
+                <i class="fas fa-times text-white hoverable"></i>
+              <% end %>
+              <%= cl_image_tag(picture.photo, width: 120, height: 75, crop: :fill, class: "mx-auto rounded") %>
+            </div>
+            <% end %>
+          </div>
+
+          <%= f.submit 'Salvar alterações', class: 'btn btn-block btn-vol' %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+</div>

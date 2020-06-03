@@ -16,6 +16,7 @@
 @import "requests/index";
 @import "requests/show";
 @import "requests/new";
+@import "requests/category";
 @import "chatrooms/show";
 @import "reviews/show";
 @import "devise/login-form";
@@ -64,3 +65,5 @@ text-decoration: none;
   background: white;
   border-radius: 2px;
 }
+
+@import 'cookies_eu';

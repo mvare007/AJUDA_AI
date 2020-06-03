@@ -13,12 +13,14 @@ class AssignmentsController < ApplicationController
 
   def update
     @assignment.update(assignment_params)
-    redirect_to user_requests_path, anchor: @assignment
+    redirect_to user_requests_path(anchor: @assignment)
   end
 
   def destroy
     @assignment.destroy
-    redirect_to user_requests_path
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
   end
 
   private

@@ -1,0 +1,36 @@
+<div class="container">
+
+  <% unless @requests.blank? %>
+
+    <h1 class="text-header-2"><%= params[:category] %></h1>
+    <hr class="hr-vol">
+
+    <div class="cards my-5">
+      <% ordered_by_creation(@requests).each do |request| %>
+        <%= render 'shared/request_card', request: request %>
+      <% end %>
+    </div>
+
+  <% else %>
+
+    <div class="d-inline-flex">
+      <%= link_to requests_path do %>
+        <i class="fas fa-long-arrow-alt-left text-header-2 hoverable mr-5"></i>
+      <% end %>
+      <h3 class="text-header-2">Sem pedidos com categoria "<%= params[:category] %>"</h3>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h2 class="text-header-2">Vê outros pedidos:</h2>
+    <hr class="hr-vol">
+
+    <div class="cards my-5">
+      <% @other_requests.each do |request| %>
+        <%= render 'shared/request_card', request: request %>
+      <% end %>
+    </div>
+
+  <% end %>
+
+</div>

@@ -1,6 +1,10 @@
 <div class="card hoverable">
   <%= link_to request_path(request), class: 'nounderline' do %>
+  <% if request.pictures.count >= 1  %>
+    <%= cl_image_tag(request.pictures.first.photo, class: "card-img-top") %>
+  <% else %>
     <%= image_tag "https://source.unsplash.com/random", class: "card-img-top"  %>
+  <% end %>
     <div class="card-block text-center">
       <div class="d-flex justify-content-between mt-1">
         <p class="badge badge-light"><%= request.category %></p>

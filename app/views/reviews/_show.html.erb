@@ -9,8 +9,9 @@
       <% review.rating.to_i.times do %>
         <span class="fa fa-star checked text-warning"></span>
       <% end %>
+      <h5 class="mt-3"><%= review.request.title %></h5>
       <p>"<%= review.content %>"</p>
-      <p>- <%= link_to review.request.user.full_name, user_path(review.request.user), class: "text-decoration-none text-dark-50 hoverable" %></p>
+      <p>- <%= link_to review.request.user.full_name, user_path(review.request.user), class: "text-decoration-none text-dark hoverable" %></p>
     </div>
   </div>
 <% end %>

@@ -21,6 +21,12 @@ class User < ApplicationRecord
   validates :city, presence: true
   validates :about_me, length: { maximum: 300 }
 
+  include PgSearch::Model
+  pg_search_scope :search_by_first_name_last_name_and_city,
+    against: [ :first_name, :last_name, :city ],
+    using: {
+      tsearch: { prefix: true }
+    }
 
   def full_name
     "#{self.first_name.capitalize}" + " " + "#{self.last_name.capitalize}"

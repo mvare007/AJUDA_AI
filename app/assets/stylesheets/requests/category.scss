@@ -1,0 +1,102 @@
+.category-badge-img {
+  height: 40px;
+  width: 45px;
+  padding: 5px;
+  filter: invert(9%) sepia(36%) saturate(162%) hue-rotate(191deg) brightness(104%) contrast(95%);
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.category-badge {
+  height: 50px;
+  width: 50px;
+  padding: 5px;
+  color: black;
+  margin: auto;
+  text-align: center;
+  font-size: 35px;
+}
+
+.text-header-3 {
+  font-size: 30px;
+  color: white;
+  text-align: center;
+}
+
+.category-container {
+  background-color: #8556B8;
+  border-radius: 16px;
+  height: 100%;
+}
+
+.category-container p {
+  color: black;
+  font-size: 12px;
+}
+
+.category-wrap {
+  width: 90px;
+  margin: auto;
+  margin-top: 22px;
+  background-color: #3C214E;
+  border-radius: 50px;
+  :hover {
+    opacity: 0.8;
+    transform: scale(0.9);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+  }
+}
+
+.category-wrap p {
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-stroke: 0.30px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+  text-rendering: optimizeLegibility !important;
+
+  :hover {
+    text-decoration: none;
+  }
+}
+
+.red {
+  background-color: #ff2e4c;
+}
+
+.blue {
+  background-color: #3FB1CE;
+}
+
+.pink {
+  background-color: #cc4bc2;
+}
+
+.pink-2 {
+  background-color: #FFF6D9;
+}
+
+.yellow {
+  background-color: #F6EC45;
+}
+
+.light-blue {
+  background-color: #F2C046;
+}
+
+.deep-blue {
+  background-color: #a2a8d3;
+}
+
+.green {
+  background-color: #00cc66;
+}
+
+.marine {
+  background-color: #f1c40f;
+}
+
+.orange {
+  background-color: #ff784f;
+}
