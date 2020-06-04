@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_192455) do
+ActiveRecord::Schema.define(version: 2020_06_04_102604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 2020_06_01_192455) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "request_id"
-    t.index ["request_id"], name: "index_chatrooms_on_request_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_chatrooms_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -159,7 +159,7 @@ ActiveRecord::Schema.define(version: 2020_06_01_192455) do
   add_foreign_key "assignments", "requests"
   add_foreign_key "assignments", "users", column: "asker_id"
   add_foreign_key "assignments", "volunteers"
-  add_foreign_key "chatrooms", "requests"
+  add_foreign_key "chatrooms", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "pictures", "requests"

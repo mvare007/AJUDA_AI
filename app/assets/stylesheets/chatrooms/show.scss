@@ -1,13 +1,14 @@
 .messages {
   font-size: 15px;
   color: #525252;
-  background-color: #ffffff;
+  background: linear-gradient(180deg, #8836BF 12%, #762EA6);
   padding: 20px;
   border: 1px solid yellow;
   border-top: none;
   border-bottom-width: 0;
-  max-height: calc(100vh - 70px - 45px - 61px - 30px);
-  overflow: scroll;
+  max-height: calc(82vh - 70px - 45px - 61px - 30px);
+  min-height: calc(82vh - 70px - 45px - 61px - 30px);
+  overflow-y: scroll;
 }
 
 .message {
@@ -31,6 +32,7 @@
   overflow: visible;
   white-space: normal;
   height:auto;
+  font-size: 20px;
 }
 
 .avatar-chat {
@@ -62,6 +64,7 @@ input.form-control {
 }
 
 .chat-header {
+  white-space: nowrap;
   background-color: #F1B247;
   color: white;
   padding: 10px 20px;
@@ -78,4 +81,47 @@ input.form-control {
     color: $purple;
     opacity: 0.8;
   }
+}
+
+#chat-index {
+  background: linear-gradient(180deg, #8836BF 12%, #762EA6);
+  border-radius: 16px;
+  border: solid 1px white;
+  max-height: calc(104vh - 70px - 45px - 61px - 30px);
+  min-height: calc(90vh - 70px - 45px - 61px - 30px);
+  overflow-y: scroll;
+}
+
+.active-chatroom {
+  background-color: #3C214F;
+  opacity: 0.9;
+}
+
+#last-message {
+  margin-left: 98px;
+}
+
+.yellow-scrollbar::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #D8C2DD;
+}
+
+.yellow-scrollbar::-webkit-scrollbar
+{
+  width: 2px;
+  background-color: #F5F5F5;
+}
+
+.yellow-scrollbar::-webkit-scrollbar-thumb
+{
+  background-color: #F90;
+  background-image: -webkit-linear-gradient(90deg,
+                      rgba(255, 255, 255, .2) 25%,
+                      transparent 25%,
+                      transparent 50%,
+                      rgba(255, 255, 255, .2) 50%,
+                      rgba(255, 255, 255, .2) 75%,
+                      transparent 75%,
+                      transparent)
 }

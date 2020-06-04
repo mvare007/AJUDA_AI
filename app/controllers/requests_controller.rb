@@ -10,7 +10,6 @@ class RequestsController < ApplicationController
 
   def show
     single_map_marker
-    @chatroom = Chatroom.includes(messages: :user).where(request: @request).first
     @assignment = @request.assignments.where(asker: current_user).first
   end
 
@@ -20,10 +19,9 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
-    @chatroom = Chatroom.new(name: @request.title, request: @request)
     @volunteer = Volunteer.new(request: @request)
     @request.user = current_user
-    if @request.save && @chatroom.save && @volunteer.save || verify_recaptcha(model: @request)
+    if @request.save && @volunteer.save || verify_recaptcha(model: @request)
       create_pictures
       redirect_to request_path(@request), notice: "Pedido criado com sucesso"
     else
