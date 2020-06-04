@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get 'favorite', to: 'requests#favorite', as: 'favorite'
   end
 
-  resources :chatrooms, only: [:index, :show, :destroy] do
+  resources :chatrooms, only: [:index, :create, :show, :destroy] do
     resources :messages, only: :create
   end
 

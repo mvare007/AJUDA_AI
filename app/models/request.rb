@@ -1,7 +1,6 @@
 class Request < ApplicationRecord
   belongs_to :user
   has_one :review
-  has_one :chatroom, dependent: :destroy
   has_many :assignments, dependent: :destroy
   has_one :volunteer, dependent: :destroy
   has_many :pictures, dependent: :destroy

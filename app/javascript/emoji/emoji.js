@@ -5,7 +5,7 @@ const emojiPicker = () => {
   if (button) {
     const picker = new EmojiButton();
     picker.on('emoji', emoji => {
-      document.querySelector('.form-control').value += emoji;
+      document.querySelector('#message_content').value += emoji;
     });
     button.addEventListener('click', () => {
       picker.togglePicker(button);
