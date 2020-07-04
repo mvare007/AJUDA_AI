@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: AJUDA_AI_production
+  url: redis://redistogo:80139d43cc34d501e4c51e611ba1dd88@porgy.redistogo.com:11585/
+  # channel_prefix: AJUDA_AI_production
