@@ -1,6 +1,6 @@
 # Ajuda aí 
 
-A prototype social network built with Ruby on Rails with a PostgreSQL DB. 
+A prototype social network built with Ruby on Rails. 
 
 [**Demo**](https://ajuda-ai-beta.herokuapp.com/)
 
