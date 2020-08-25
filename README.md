@@ -14,3 +14,4 @@ A prototype social network built with Ruby on Rails.
 * Sass
 * Bootstrap
 * CarrierWave
+* Mapbox
